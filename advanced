@@ -1,0 +1,1741 @@
+document.getElementById("advcalculate").onclick = calculateCoat;
+
+function calculateCoat() {
+  var text = "";
+
+  function furLength() {
+    var length1 = document.getElementById("length1").value;
+    var length2 = document.getElementById("length2").value;
+    var text = "";
+    if (length1 === "long" && length2 === 'long') {
+      return 'will all be longhaired';
+    } else if (length1 === "short" || length2 === 'short') {
+      return 'will all be shorthaired';
+    } else if (length1 === "long" || length2 === "long") {
+      return 'have a 50% chance of short vs. long hair';
+    } else {
+      return 'have a 25% chance of being longhaired';
+    }
+  }
+
+  function wirehair() {
+    var wire1 = document.getElementById("wire1").value;
+    var wire2 = document.getElementById("wire2").value;
+    var text = "";
+    if (wire1 === "wire" || wire2 === 'wire') {
+      return ' and will all be wirehaired. ';
+    } else if (wire1 === "nowire" && wire2 === 'nowire') {
+      return '. ';
+    } else if (wire1 === "wirehet" && wire2 === "wirehet") {
+      return ' and have a 75% chance of being wirehaired. ';
+    } else {
+      return ' and have a 50% chance of being wirehaired. ';
+    }
+  }
+
+  function furType() {
+
+    function crex() {
+      var crex1 = document.getElementById("crex1").value;
+      var crex2 = document.getElementById("crex2").value;
+      var text = "";
+      if (crex1 === "crex" && crex2 === 'crex') {
+        return 'all cornish';
+      } else if (crex1 === "nocrex" || crex2 === 'nocrex') {
+        return 'normal';
+      } else if (crex1 === "crexhet" && crex2 === "crexhet") {
+        return '25 cornish';
+      } else {
+        return 'half cornish';
+      }
+    }
+
+    function rexSphynx() {
+      var rexsphynx1 = document.getElementById("rexsphynx1").value;
+      var rexsphynx2 = document.getElementById("rexsphynx2").value;
+      var text = "";
+      if (rexsphynx1 === "srex" || rexsphynx2 === "srex") {
+        return "all selkirk";
+      } else if (rexsphynx1 === "srexhet" || rexsphynx2 === "srexhet") {
+        if (rexsphynx1 === "srexhet" && rexsphynx2 === "srexhet") {
+          return "75 selkirk";
+        } else {
+          return "half selkirk";
+        }
+      } else if (rexsphynx1 === "norexsphynx" || rexsphynx2 === "norexsphynx") {
+        return "normal";
+      } else if (rexsphynx1 === "drexhet" || rexsphynx2 === "drexhet") {
+        if (rexsphynx1 === "drexhet" && rexsphynx2 === "drexhet") {
+          return "25 devon";
+        } else if (rexsphynx1 === "drex" || rexsphynx2 === "drex") {
+          return "half devon";
+        } else if (rexsphynx1 === "sphynxhet" || rexsphynx2 === "sphynxhet") {
+          return "25 devon";
+        } else {
+          return "half devon";
+        }
+      } else if (rexsphynx1 === "drex" || rexsphynx2 === "drex") {
+        if (rexsphynx1 === "sphynxhet" || rexsphynx2 === "sphynxhet") {
+          return "half devon";
+        } else {
+          return "all devon";
+        }
+      } else if (rexsphynx1 === "sphynxhet" || rexsphynx2 === "sphynxhet") {
+        if (rexsphynx1 === "sphynxhet" && rexsphynx2 === "sphynxhet") {
+          return "25 sphynx";
+        } else {
+          return "half sphynx";
+        }
+      } else {
+        return "all sphynx";
+      }
+    }
+
+    function laPerm() {
+      var perm1 = document.getElementById("perm1").value;
+      var perm2 = document.getElementById("perm2").value;
+      var text = "";
+      if (perm1 === "perm" || perm2 === 'perm') {
+        return 'all laperm';
+      } else if (perm1 === "noperm" && perm2 === 'noperm') {
+        return 'normal';
+      } else if (perm1 === "permhet" && perm2 === "permhet") {
+        return '75 laperm';
+      } else {
+        return 'half laperm';
+      }
+    }
+
+
+
+    if (rexSphynx() === "all sphynx") {
+      return "All offpring will be hairless.";
+    } else if (rexSphynx() === "half sphynx") {
+      if (crex() === "all cornish") {
+        return "Offspring have a 50% chance of being hairless and a 50% chance of a Cornish Rex coat.";
+      } else if (crex() === "half cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 50% chance of being hairless, a and a 25% chance of a LaPerm coat, and a 25% chance of a Laperm/Cornish Rex coat (curly, undercoat only).";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 50% chance of being hairless, an 18.75% chance of a LaPerm coat, a 6.25% chance of a Cornish Rex coat, an 18.75% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), and a 6.25% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 50% chance of being hairless, a 12.5% chance of a LaPerm coat, a 12.5% chance of a Cornish Rex coat, a 12.5% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), and a 12.5% chance of a normal coat.";
+        } else {
+          return "Offspring have a 50% chance of being hairless, a 25% chance of a Cornish Rex coat, and a 25% chance of a normal coat.";
+        }
+      } else if (crex() === "25 cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 50% chance of being hairless, a 37.5% chance of a LaPerm coat, and a 12.5% chance of a LaPerm/Cornish Rex coat (curly, undercoat only).";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 50% chance of being hairless, a 28.125% chance of a LaPerm coat, a 3.125% chance of a Cornish Rex coat, an 9.375% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), and a 9.375% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 50% chance of being hairless, an 18.75% chance of a LaPerm coat, a 6.25% chance of a Cornish Rex coat, a 6.25% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), and an 18.75% chance of a normal coat.";
+        } else {
+          return "Offspring have a 50% chance of being hairless, a 12.5% chance of a Cornish Rex coat, and a 37.5% chance of a normal coat.";
+        }
+      } else {
+        //no cornish
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 50% chance of being hairless and a 50% chance of a LaPerm coat.";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 50% chance of being hairless, a 37.5% chance of a LaPerm coat, and a 12.5% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 50% chance of being hairless, a 25% chance of a LaPerm coat, and a 25% chance of a normal coat.";
+        } else {
+          return "Offspring have a 50% chance of being hairless and a 50% chance of a normal coat.";
+        }
+      }
+
+      //break!
+
+    } else if (rexSphynx() === "25 sphynx") {
+      if (crex() === "all cornish") {
+        return "Offspring have a 25% chance of being hairless and a 75% chance of a Cornish Rex coat.";
+      } else if (crex() === "half cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 25% chance of being hairless, a 37.5% chance of a LaPerm coat, and a 37.5% chance of a LaPerm/Cornish Rex coat (curly, undercoat only).";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 25% chance of being hairless, a 9.375% chance of a Cornish Rex coat, a 28.125% chance of a LaPerm coat, a 28.125% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), and a 9.375% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 25% chance of being hairless, a 18.75% chance of a Cornish Rex coat, an 18.75% chance of a LaPerm coat, an 18.75% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), and an 18.75% chance of a normal coat.";
+        } else {
+          return "Offspring have a 25% chance of being hairless, a 37.5% chance of a Cornish Rex coat, and a 37.5% chance of a normal coat.";
+        }
+      } else if (crex() === "25 cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 25% chance of being hairless, a 56.25% chance of a LaPerm coat, and an 18.75% chance of a LaPerm/Cornish Rex coat (curly, undercoat only).";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 25% chance of being hairless, a 42.1875% chance of a LaPerm coat, a 4.6875% chance of a Cornish Rex coat, a 14.0625% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), and a 14.0625% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 25% chance of being hairless, a 28.125% chance of a LaPerm coat, a 9.375% chance of a Cornish Rex coat, a 9.375% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), and a 28.125% chance of a normal coat.";
+        } else {
+          return "Offspring have a 25% chance of being hairless, an 18.75% chance of a Cornish Rex coat, and a 56.25% chance of a normal coat.";
+        }
+      } else {
+        //no cornish
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 25% chance of being hairless and a 75% chance of a LaPerm coat.";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 25% chance of being hairless, a 56.25% chance of a LaPerm coat, and an 18.75% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 25% chance of being hairless, a 37.5% chance of a LaPerm coat, and a 37.5% chance of a normal coat.";
+        } else {
+          return "Offspring have a 25% chance of being hairless and a 75% chance of a normal coat.";
+        }
+      }
+
+      //break! CHECKED
+
+    } else if (rexSphynx() === "all devon") {
+      if (crex() === 'all cornish') {
+        if (laPerm() === "all laperm") {
+          return "Offspring will all have a LaPerm/Cornish Rex coat (curly, undercoat only).";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 75% chance of a LaPerm/Cornish Rex coat (curly, undercoat only) and a 25% chance of a Cornish Rex coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 50% chance of a LaPerm/Cornish Rex coat (curly, undercoat only) and a 50% chance of a Cornish Rex coat.";
+        } else {
+          return "Offspring will all have a Cornish Rex coat.";
+        }
+
+      } else if (crex() === 'half cornish') {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 50% chance of a LaPerm/Cornish Rex coat (curly, undercoat only) and a 50% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs).";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 37.5% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), a 37.5% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs), a 12.5% chance of a Cornish Rex coat and a 12.5% chance of a Devon Rex coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 25% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), a 25% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs), a 25% chance of a Cornish Rex coat and a 25% chance of a Devon Rex coat.";
+        } else {
+          return "Offspring have a 50% chance of a Cornish Rex coat and a 50% chance of a Devon Rex coat.";
+        }
+      } else if (crex() === '25 cornish') {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 25% chance of a LaPerm/Cornish Rex coat (curly, undercoat only) and a 75% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs).";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have an 18.75% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), a 56.25% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs), a 6.25% chance of a Cornish Rex coat and an 18.75% chance of a Devon Rex coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 12.5% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), a 37.5% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs), a 12.5% chance of a Cornish Rex coat and a 37.5% chance of a Devon Rex coat.";
+        } else {
+          return "Offspring have a 25% chance of a Cornish Rex coat and a 75% chance of a Devon Rex coat.";
+        }
+      } else {
+        //no cornish all devon
+        if (laPerm() === "all laperm") {
+          return "Offspring will all have a LaPerm/Devon Rex coat (curly, shortened guard hairs).";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring will have a 75% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs) and a 25% chance of a Devon Rex coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring will have a 50% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs) and a 50% chance of a Devon Rex coat.";
+        } else {
+          return "Offspring will all have a Devon Rex coat.";
+        }
+      }
+
+      //break! CHECKED
+
+    } else if (rexSphynx() === "half devon") {
+      if (crex() === "all cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring will all have a LaPerm/Cornish Rex coat (curly, undercoat only).";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 75% chance of a LaPerm/Cornish Rex coat (curly, undercoat only) and a 25% chance of a Cornish Rex coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 50% chance of a LaPerm/Cornish Rex coat (curly, undercoat only) and a 50% chance of a Cornish Rex coat.";
+        } else {
+          return "Offspring will all have a Cornish Rex coat.";
+        }
+      } else if (crex() === "half cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 25% chance of a LaPerm coat, a 50% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), and a 25% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs).";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have an 18.75% chance of a LaPerm coat, an 37.5% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), an 18.75% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs), a 12.5% chance of a Cornish Rex coat, a 6.25% chance of a Devon Rex coat, and a 6.25% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 12.5% chance of a LaPerm coat, an 25% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), an 12.5% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs), a 25% chance of a Cornish Rex coat, a 12.5% chance of a Devon Rex coat, and a 12.5% chance of a normal coat.";
+        } else {
+          return "Offspring have a 50% chance of a Cornish Rex coat, a 25% chance of a Devon Rex coat (curly, shortened guard hairs), and a 25% chance of a normal coat.";
+        }
+      } else if (crex() === "25 cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 37.5% chance of a LaPerm coat, a 25% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), and a 37.5% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs).";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 28.125% chance of a LaPerm coat, an 18.75% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), a 28.125% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs), a 6.25% chance of a Cornish Rex coat, a 9.375% chance of a Devon Rex coat, and a 9.375% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have an 18.75% chance of a LaPerm coat, a 12.5% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), an 18.75% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs), a 12.5% chance of a Cornish Rex coat, an 18.75% chance of a Devon Rex coat, and an 18.75% chance of a normal coat.";
+        } else {
+          return "Offspring have a 25% chance of a Cornish Rex coat, a 37.5% chance of a Devon Rex coat, and a 37.5% chance of a normal coat.";
+        }
+      } else {
+        //half devon no cornish
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 50% chance of a LaPerm coat and a 50% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs).";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 37.5% chance of a LaPerm coat, a 37.5% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs), a 12.5% chance of a Devon Rex coat, and a 12.5% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 25% chance of a LaPerm coat, a 25% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs), a 25% chance of a Devon Rex coat, and a 25% chance of a normal coat.";
+        } else {
+          return "Offspring have a 50% chance of a Devon Rex coat and a 50% chance of a normal coat.";
+        }
+      }
+
+      //break! CHECKED
+
+    } else if (rexSphynx() === "25 devon") {
+      if (crex() === "all cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring will all have a LaPerm/Cornish Rex coat (curly, undercoat only).";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 75% chance of a LaPerm/Cornish Rex coat (curly, undercoat only) and a 25% chance of a Cornish Rex coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 50% chance of a LaPerm/Cornish Rex coat (curly, undercoat only) and a 50% chance of a Cornish Rex coat.";
+        } else {
+          return "Offspring will all have a Cornish Rex coat.";
+        }
+      } else if (crex() === "half cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 37.5% chance of a LaPerm coat, a 50% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), and a 12.5% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs).";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 28.125% chance of a LaPerm coat, a 37.5% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), a 9.375% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs), a 12.5% chance of a Cornish Rex coat, a 3.125% chance of a Devon Rex coat, and a 9.375% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have an 18.75% chance of a LaPerm coat, a 25% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), a 6.25% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs), a 25% chance of a Cornish Rex coat, a 6.25% chance of a Devon Rex coat, and an 18.75% chance of a normal coat.";
+        } else {
+          return "Offspring have a 50% chance of a Cornish Rex coat, a 12.5% chance of a Devon Rex coat, and a 37.5% chance of a normal coat.";
+        }
+      } else if (crex() === "25 cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 56.25% chance of a LaPerm coat, a 25% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), and an 18.75% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs).";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 42.1875% chance of a LaPerm coat, an 18.75% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), a 14.0625% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs), a 6.25% chance of a Cornish Rex coat, a 4.6875% chance of a Devon Rex coat, and a 14.0625% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 28.125% chance of a LaPerm coat, a 12.5% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), a 9.375% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs), a 12.5% chance of a Cornish Rex coat, a 9.375% chance of a Devon Rex coat, and a 28.125% chance of a normal coat.";
+        } else {
+          return "Offspring have a 25% chance of a Cornish Rex coat, an 18.75% chance of a Devon Rex coat, and a 56.25% chance of a normal coat.";
+        }
+      } else {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 75% chance of a LaPerm/Cornish Rex coat (curly, undercoat only) and a 25% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs).";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 56.25% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), an 18.75% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs), a 6.25% chance of a Devon Rex coat, and an 18.75% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 37.5% chance of a LaPerm/Cornish Rex coat (curly, undercoat only), a 12.5% chance of a LaPerm/Devon Rex coat (curly, shortened guard hairs), a 12.5% chance of a Devon Rex coat, and a 37.5% chance of a normal coat.";
+        } else {
+          return "Offspring have a 25% chance of a Devon Rex coat and a 75% chance of a normal coat.";
+        }
+      }
+
+      //break!CHECKED
+
+    } else if (rexSphynx() === "all selkirk") {
+      if (crex() === "all cornish") {
+        if (laPerm() === "all laperm") {
+          return "All offspring will have a Selkirk/LaPerm/Cornish Rex coat (curly, no guard hairs).";
+        } else if (laPerm() === "75 laperm") {
+          return "All offspring will have a curly coat with no guard hairs from a combination of Cornish Rex with Selkirk Rex and/or LaPerm.";
+        } else if (laPerm() === "half laperm") {
+          return "All offspring will have a curly coat with no guard hairs from a combination of Cornish Rex with Selkirk Rex and/or LaPerm.";
+        } else {
+          return "All offspring will have a Selkirk/Cornish Rex coat (curly, no guard hairs).";
+        }
+      } else if (crex() === "half cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 50% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, and a 50% chance of a curly coat from Selkirk Rex and/or LaPerm.";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 50% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, and a 50% chance of a curly coat from Selkirk Rex and/or LaPerm.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 50% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, and a 50% chance of a curly coat from Selkirk Rex and/or LaPerm.";
+        } else {
+          return "Offspring have a 50% chance of Selkirk/Cornish Rex (curly, no guard hairs), and a 50% chance of a Selkirk Rex coat.";
+        }
+      } else if (crex() === "25 cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 25% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, and a 75% chance of a curly coat from Selkirk Rex and/or LaPerm.";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 25% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, and a 75% chance of a curly coat from Selkirk Rex and/or LaPerm.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 25% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, and a 75% chance of a curly coat from Selkirk Rex and/or LaPerm.";
+        } else {
+          return "Offspring have a 25% chance of Selkirk/Cornish Rex (curly, no guard hairs), and a 75% chance of a Selkirk Rex coat.";
+        }
+      } else {
+        if (laPerm() === "all laperm") {
+          return "All offspring will have curly LaPerm/Selkirk Rex coats.";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 75% chance of a LaPerm/Selkirk Rex coat and a 25% chance of a Selkirk Rex coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 50% chance of a LaPerm/Selkirk Rex coat and a 50% chance of a Selkirk Rex coat.";
+        } else {
+          return "Offspring will all have Selkirk Rex coats.";
+        }
+      }
+
+      //break!
+
+    } else if (rexSphynx() === "75 selkirk") {
+      if (crex() === "all cornish") {
+        if (laPerm() === "all laperm") {
+          return "All offspring will have a curly coat with no guard hairs from a combination of Cornish Rex with Selkirk Rex and/or LaPerm.";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 93.75% chance of a curly coat with no guard hairs from a combination of Cornish Rex with Selkirk Rex and/or LaPerm, and a 6.25% chance of a Cornish Rex coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have an 87.5% chance of a curly coat with no guard hairs from a combination of Cornish Rex with Selkirk Rex and/or LaPerm, and a 12.5% chance of a Cornish Rex coat.";
+        } else {
+          return "Offspring have a 75% chance of a Selkirk/Cornish Rex coat (curly, no guard hairs) and a 25% chance of a Cornish Rex coat.";
+        }
+      } else if (crex() === "half cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 50% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, and a 50% chance of a curly coat from Selkirk Rex and/or LaPerm.";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 46.875% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, a 46.875% chance of a curly coat from Selkirk Rex and/or LaPerm, a 3.125% chance of a Cornish Rex coat, and a 3.125% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 43.75% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, a 43.75% chance of a curly coat from Selkirk Rex and/or LaPerm, a 6.25% chance of a Cornish Rex coat, and a 6.25% chance of a normal coat.";
+        } else {
+          return "Offspring have a 37.5% chance of a Selkirk/Cornish Rex coat (curly, no guard hairs), a 37.5% chance of a Selkirk Rex coat, a 12.5% chance of a Cornish Rex coat, and a 12.5% chance of a normal coat.";
+        }
+      } else if (crex() === "25 cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 25% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, and a 75% chance of a curly coat from Selkirk Rex and/or LaPerm.";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 23.4375% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, a 70.3125% chance of a curly coat from Selkirk Rex and/or LaPerm, a 1.5125% chance of a Cornish Rex coat, and a 4.6375% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 21.875% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, a 65.625% chance of a curly coat from Selkirk Rex and/or LaPerm, a 3.125% chance of a Cornish Rex coat, and a 9.375% chance of a normal coat.";
+        } else {
+          return "Offspring have an 18.75% chance of a Selkirk/Cornish Rex coat (curly, no guard hairs), a 56.25% chance of a Selkirk Rex coat, a 6.25% chance of a Cornish Rex coat, and an 18.75% chance of a normal coat.";
+        }
+      } else {
+        //75 selkirk no cornish
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 75% chance of a LaPerm/Selkirk Rex coat and a 25% chance of a LaPerm coat.";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 56.25% chance of a LaPerm/Selkirk Rex coat, an 18.75% chance of a LaPerm coat, and an 18.75% chance of a Selkirk Rex coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 37.5% chance of a LaPerm/Selkirk Rex coat, a 12.5% chance of a LaPerm coat, a 37.5% chance of a Selkirk Rex coat, and a 12.5% chance of a normal coat.";
+        } else {
+          return "Offspring have a 75% chance of a Selkirk Rex coat and a 25% chance of a normal coat.";
+        }
+      }
+
+      //break!
+
+    } else if (rexSphynx() === "half selkirk") {
+      if (crex() === "all cornish") {
+        if (laPerm() === "all laperm") {
+          return "All offspring will have a curly coat with no guard hairs from a combination of Cornish Rex with Selkirk Rex and/or LaPerm.";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have an 87.5% chance of a curly coat with no guard hairs from a combination of Cornish Rex with Selkirk Rex and/or LaPerm, and a 12.5% chance of a Cornish Rex coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have an 75% chance of a curly coat with no guard hairs from a combination of Cornish Rex with Selkirk Rex and/or LaPerm, and a 25% chance of a Cornish Rex coat.";
+        } else {
+          return "Offspring have a 50% chance of a Selkirk/Cornish Rex coat (curly, no guard hairs) and a 50% chance of a Cornish Rex coat.";
+        }
+      } else if (crex() === "half cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 50% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, and a 50% chance of a curly coat from Selkirk Rex and/or LaPerm.";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 43.75% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, a 43.75% chance of a curly coat from Selkirk Rex and/or LaPerm, a 6.25% chance of a Cornish Rex coat, and a 6.25% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 37.5% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, a 37.5% chance of a curly coat from Selkirk Rex and/or LaPerm, a 12.5% chance of a Cornish Rex coat, and a 12.5% chance of a normal coat.";
+        } else {
+          return "Offspring have a 25% chance of a Selkirk/Cornish Rex coat (curly, no guard hairs), a 25% chance of a Selkirk Rex coat, a 25% chance of a Cornish Rex coat, and a 25% chance of a normal coat.";
+        }
+      } else if (crex() === "25 cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 25% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, and a 75% chance of a curly coat from Selkirk Rex and/or LaPerm.";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 14.0625% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, a 4.6875% chance of a curly coat from Selkirk Rex and/or LaPerm, a 20.3125% chance of a Cornish Rex coat, and a 60.9375% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 6.25% chance of a curly coat with no guard hairs from Cornish Rex with Selkirk Rex and/or LaPerm, an 18.75% chance of a curly coat from Selkirk Rex and/or LaPerm, an 18.75% chance of a Cornish Rex coat, and a 56.25% chance of a normal coat.";
+        } else {
+          return "Offspring have a 12.5% chance of a Selkirk/Cornish Rex coat (curly, no guard hairs), a 37.5% chance of a Selkirk Rex coat, a 12.5% chance of a Cornish Rex coat, and an 37.5% chance of a normal coat.";
+        }
+      } else {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 50% chance of a LaPerm/Selkirk Rex coat and a 50% chance of a LaPerm coat.";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 37.5% chance of a LaPerm/Selkirk Rex coat, a 37.5% chance of a LaPerm coat, a 12.5% chance of a Selkirk Rex coat, and a 12.5% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 25% chance of a LaPerm/Selkirk Rex coat, a 25% chance of a LaPerm coat, a 25% chance of a Selkirk Rex coat, and a 25% chance of a normal coat.";
+        } else {
+          return "Offspring have a 50% chance of a Selkirk Rex coat and a 50% chance of a normal coat.";
+        }
+      }
+
+      //break! CHECKED
+
+    } else {
+      if (crex() === "all cornish") {
+        return "Offspring will all have a Cornish Rex coat.";
+      } else if (crex() === "half cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 50% chance of a Cornish Rex/LaPerm coat (curly, no guard hairs) and a 50% chance of a LaPerm coat";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 37.5% chance of a Cornish Rex/LaPerm coat (curly, no guard hairs) coat, a 37.5% chance of a LaPerm coat, a 12.5% chance of a Cornish Rex coat, and a 12.5% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 25% chance of a Cornish Rex/LaPerm coat (curly, no guard hairs) coat, a 25% chance of a LaPerm coat, a 25% chance of a Cornish Rex coat, and a 25% chance of a normal coat.";
+        } else {
+          return "Offspring have a 50% chance of a Cornish Rex coat and a 50% chance of a normal coat.";
+        }
+      } else if (crex() === "25 cornish") {
+        if (laPerm() === "all laperm") {
+          return "Offspring have a 25% chance of a Cornish Rex/LaPerm coat (curly, no guard hairs) coat and a 75% chance of a LaPerm coat.";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have an 18.75% chance of a Cornish Rex/LaPerm coat (curly, no guard hairs) coat, a 56.25% chance of a LaPerm coat, a 6.25% chance of a Cornish Rex coat, and an 18.75% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 12.5% chance of a Cornish Rex/LaPerm coat (curly, no guard hairs) coat, a 37.5% chance of a LaPerm coat, a 12.5% chance of a Cornish Rex coat, and a 37.5% chance of a normal coat.";
+        } else {
+          return "Offspring have a 25% chance of a Cornish Rex coat and a 75% chance of a normal coat.";
+        }
+      } else {
+        if (laPerm() === "all laperm") {
+          return "Offspring will all have LaPerm coats.";
+        } else if (laPerm() === "75 laperm") {
+          return "Offspring have a 75% chance of a LaPerm coat and a 25% chance of a normal coat.";
+        } else if (laPerm() === "half laperm") {
+          return "Offspring have a 50% chance of a LaPerm coat and a 50% chance of a normal coat.";
+        } else {
+          return "";
+        }
+      }
+    }
+  }
+  //end furtype
+
+  function eumelanin() {
+    var eum1 = document.getElementById("eum1").value;
+    var eum2 = document.getElementById("eum2").value;
+    var text = "";
+    if (eum1 === "blbl" || eum2 === "blbl") {
+      return "all black";
+    } else if (eum1 === "blch" || eum2 === "blch") {
+      if (eum1 === "blch" && eum2 === "blch") {
+        return "25 chocolate";
+      } else if (eum1 === "blci" || eum2 === "blci") {
+        return "25 chocolate"
+      } else {
+        return "half chocolate";
+      }
+    } else if (eum1 === "blci" || eum2 === "blci") {
+      if (eum1 === "blci" && eum2 === "blci") {
+        return "25 cinnamon";
+      } else if (eum1 === "chch" || eum2 === "chch") {
+        return "half chocolate";
+      } else if (eum1 === "chci" || eum2 === "chci") {
+        return "25 chocolate 25 cinnamon";
+      } else {
+        return "half cinnamon";
+      }
+    } else if (eum1 === "chch" || eum2 === "chch") {
+      return "all chocolate";
+    } else if (eum1 === "chci" || eum2 === "chci") {
+      if (eum1 === "chci" && eum2 === "chci") {
+        return "75 chocolate 25 cinnamon";
+      } else {
+        return "half chocolate half cinnamon";
+      }
+    } else {
+      return "all cinnamon";
+    }
+  }
+
+  function redMolly() {
+    var red1 = document.getElementById("red1").value;
+    var red2 = document.getElementById("red2").value;
+    var text = "";
+    if (red1 === "red") {
+      if (red2 === "red") {
+        return "all red";
+      } else if (red2 === "notred") {
+        return "all tortie";
+      } else {
+        return "half red half tortie";
+      }
+    } else {
+      if (red2 === "red") {
+        return "all tortie";
+      } else if (red2 === "notred") {
+        return "none red";
+      } else {
+        return "half tortie";
+      }
+    }
+  }
+
+  function dilute() {
+    var dilute1 = document.getElementById("dilute1").value;
+    var dilute2 = document.getElementById("dilute2").value;
+    var text = "";
+    if (dilute1 === "dilute" && dilute2 === 'dilute') {
+      return 'all dilute';
+    } else if (dilute1 === "nodilute" || dilute2 === 'nodilute') {
+      return 'none dilute';
+    } else if (dilute1 === "dilute" || dilute2 === "dilute") {
+      return 'half dilute';
+    } else {
+      return '25 dilute';
+    }
+  }
+
+  function colorTom() {
+    var red2 = document.getElementById("red2").value;
+    if (red2 === "red") {
+      if (dilute() === "none dilute") {
+        return "Toms will all be red.";
+      } else if (dilute() === "all dilute") {
+        return "Toms will all be cream.";
+      } else if (dilute() === "half dilute") {
+        return "Toms have a 50% chance of being red and a 50% chance of being cream.";
+      } else {
+        return "Toms have a 75% chance of being red and a 25% chance of being cream.";
+      }
+    } else if (red2 === "notred") {
+      if (eumelanin() === "all black") {
+        if (dilute() === "none dilute") {
+          return "Toms will all be black. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms will all be gray. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have a 50% chance of being black and a 50% chance of being gray. ";
+        } else {
+          return "Toms have a 75% chance of being black and a 25% chance of being gray. ";
+        }
+      } else if (eumelanin() === "all chocolate") {
+        if (dilute() === "none dilute") {
+          return "Toms will all be chocolate. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms will all be lilac. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have a 50% chance of being chocolate and a 50% chance of being lilac. ";
+        } else {
+          return "Toms have a 75% chance of being chocolate and a 25% chance of being lilac. ";
+        }
+      } else if (eumelanin() === "all cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Toms will all be cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms will all be fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have a 50% chance of being cinnamon and a 50% chance of being fawn. ";
+        } else {
+          return "Toms have a 75% chance of being cinnamon and a 25% chance of being fawn. ";
+        }
+      } else if (eumelanin() === "half chocolate") {
+        if (dilute() === "none dilute") {
+          return "Toms have a 50% chance of being black and a 50% chance of being chocolate. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms have a 50% chance of being gray and a 50% chance of being lilac. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have an even chance of being black, chocolate, gray, or lilac.";
+        } else {
+          return "Toms have a 37.5% chance of being black, a 37.5% chance of being chocolate, a 12.5% chance of being gray, and a 12.5% chance of being lilac. ";
+        }
+      } else if (eumelanin() === "half cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Toms have a 50% chance of being black and a 50% chance of being cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms have a 50% chance of being gray and a 50% chance of being fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have an even chance of being black, cinnamon, gray, or fawn.";
+        } else {
+          return "Toms have a 37.5% chance of being black, a 37.5% chance of being cinnamon, a 12.5% chance of being gray, and a 12.5% chance of being fawn. ";
+        }
+      } else if (eumelanin() === "half chocolate half cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Toms have a 50% chance of being chocolate and a 50% chance of being cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms have a 50% chance of being lilac and a 50% chance of being fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have an even chance of being chocolate, cinnamon, lilac, or fawn.";
+        } else {
+          return "Toms have a 37.5% chance of being chocolate, a 37.5% chance of being cinnamon, a 12.5% chance of being lilac, and a 12.5% chance of being fawn. ";
+        }
+      } else if (eumelanin() === "25 chocolate") {
+        if (dilute() === "none dilute") {
+          return "Toms have a 75% chance of being black and a 25% chance of being chocolate. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms have a 75% chance of being gray and a 25% chance of being lilac. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have a 37.5% chance of being black, a 12.5% chance of being chocolate, a 37.5% chance of being gray, and a 12.5% chance of being lilac. ";
+        } else {
+          return "Toms have a 56.25% chance of being black, an 18.75% chance of being chocolate, an 18.5% chance of being gray, and a 6.25% chance of being lilac. ";
+        }
+      } else if (eumelanin() === "25 cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Toms have a 75% chance of being black and a 25% chance of being cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms have a 75% chance of being gray and a 25% chance of being fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have a 37.5% chance of being black, a 12.5% chance of being cinnamon, a 37.5% chance of being gray, and a 12.5% chance of being fawn. ";
+        } else {
+          return "Toms have a 56.25% chance of being black, an 18.75% chance of being cinnamon, an 18.5% chance of being gray, and a 6.25% chance of being fawn. ";
+        }
+      } else if (eumelanin() === "75 chocolate 25 cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Toms have a 75% chance of being chocolate and a 25% chance of being cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms have a 75% chance of being lilac and a 25% chance of being fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have a 37.5% chance of being chocolate, a 12.5% chance of being cinnamon, a 37.5% chance of being lilac, and a 12.5% chance of being fawn. ";
+        } else {
+          return "Toms have a 56.25% chance of being chocolate, an 18.75% chance of being cinnamon, an 18.5% chance of being lilac, and a 6.25% chance of being fawn. ";
+        }
+      } else {
+        if (dilute() === "none dilute") {
+          return "Toms have a 50% chance of being black, a 25% chance of being chocolate, and a 25% chance of being cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms have a 50% chance of being gray, a 25% chance of being lilac, and a 25% chance of being fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have a 25% chance of being black, a 12.5% chance of being chocolate, a 12.5% chance of being cinnamon, a 25% chance of being gray, a 12.5% chance of being lilac, and a 12.5% chance of being fawn. ";
+        } else {
+          return "Toms have a 37.5% chance of being black, an 18.75% chance of being chocolate, an 18.75% chance of being cinnamon, a 12.5% chance of being gray, a 6.25% chance of being lilac, and a 6.25% chance of being fawn. ";
+        }
+      }
+    } else {
+      if (eumelanin() === "all black") {
+        if (dilute() === "none dilute") {
+          return "Toms have a 50% chance of being red and a 50% chance of being black. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms have a 50% chance of being cream and a 50% chance of being gray. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have an even chance of being red, black, cream, or gray.";
+        } else {
+          return "Toms have a 37.5% chance of being red, a 37.5% chance of being black, a 12.5% chance of being cream, and a 12.5% chance of being gray. ";
+        }
+      } else if (eumelanin() === "all chocolate") {
+        if (dilute() === "none dilute") {
+          return "Toms have a 50% chance of being red and a 50% chance of being chocolate. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms have a 50% chance of being cream and a 50% chance of being lilac. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have an even chance of being red, chocolate, cream, or lilac.";
+        } else {
+          return "Toms have a 37.5% chance of being red, a 37.5% chance of being chocolate, a 12.5% chance of being cream, and a 12.5% chance of being lilac. ";
+        }
+      } else if (eumelanin() === "all cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Toms have a 50% chance of being red and a 50% chance of being cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms have a 50% chance of being cream and a 50% chance of being fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have an even chance of being red, cinnamon, cream, or fawn.";
+        } else {
+          return "Toms have a 37.5% chance of being red, a 37.5% chance of being cinnamon, a 12.5% chance of being cream, and a 12.5% chance of being fawn. ";
+        }
+      } else if (eumelanin() === "half chocolate") {
+        if (dilute() === "none dilute") {
+          return "Toms have a 50% chance of being red, a 25% chance of being black, and a 25% chance of being chocolate. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms have a 50% chance of being cream, a 25% chance of being gray, and a 25% chance of being lilac. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have a 25% chance of being red, a 12.5% chance of being black, a 12.5% chance of being chocolate, a 25% chance of being cream, a 12.5% chance of being gray, and a 12.5% chance of being lilac. ";
+        } else {
+          return "Toms have a 37.5% chance of being red, an 18.75% chance of being black, an 18.75% chance of being chocolate, a 12.5% chance of being cream, a 6.25% chance of being gray, and a 6.25% chance of being lilac. ";
+        }
+      } else if (eumelanin() === "half cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Toms have a 50% chance of being red, a 25% chance of being black, and a 25% chance of being cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms have a 50% chance of being cream, a 25% chance of being gray, and a 25% chance of being fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have a 25% chance of being red, a 12.5% chance of being black, a 12.5% chance of being cinnamon, a 25% chance of being cream, a 12.5% chance of being gray, and a 12.5% chance of being fawn. ";
+        } else {
+          return "Toms have a 37.5% chance of being red, an 18.75% chance of being black, an 18.75% chance of being cinnamon, a 12.5% chance of being cream, a 6.25% chance of being gray, and a 6.25% chance of being fawn. ";
+        }
+      } else if (eumelanin() === "half chocolate half cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Toms have a 50% chance of being red, a 25% chance of being chocolate, and a 25% chance of being cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms have a 50% chance of being cream, a 25% chance of being lilac, and a 25% chance of being fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have a 25% chance of being red, a 12.5% chance of being chocolate, a 12.5% chance of being cinnamon, a 25% chance of being cream, a 12.5% chance of being lilac, and a 12.5% chance of being fawn. ";
+        } else {
+          return "Toms have a 37.5% chance of being red, an 18.75% chance of being chocolate, an 18.75% chance of being cinnamon, a 12.5% chance of being cream, a 6.25% chance of being lilac, and a 6.25% chance of being fawn. ";
+        }
+      } else if (eumelanin() === "25 chocolate") {
+        if (dilute() === "none dilute") {
+          return "Toms have a 50% chance of being red, a 37.5% chance of being black, and a 12.5% chance of being chocolate. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms have a 50% chance of being cream, a 37.5% chance of being gray, and a 12.5% chance of being lilac. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have a 25% chance of being red, an 18.75% chance of being black, a 6.25% chance of being chocolate, a 25% chance of being cream, an 18.75% chance of being gray, and a 6.25% chance of being lilac. ";
+        } else {
+          return "Toms have a 37.5% chance of being red, a 28.125% chance of being black, a 9.375% chance of being chocolate, a 12.5% chance of being cream, a 9.375% chance of being gray, and a 3.125% chance of being lilac. ";
+        }
+      } else if (eumelanin() === "25 cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Toms have a 50% chance of being red, a 37.5% chance of being black, and a 12.5% chance of being cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms have a 50% chance of being cream, a 37.5% chance of being gray, and a 12.5% chance of being fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have a 25% chance of being red, an 18.75% chance of being black, a 6.25% chance of being cinnamon, a 25% chance of being cream, an 18.75% chance of being gray, and a 6.25% chance of being fawn. ";
+        } else {
+          return "Toms have a 37.5% chance of being red, a 28.125% chance of being black, a 9.375% chance of being cinnamon, a 12.5% chance of being cream, a 9.375% chance of being gray, and a 3.125% chance of being fawn. ";
+        }
+      } else if (eumelanin() === "75 chocolate 25 cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Toms have a 50% chance of being red, a 37.5% chance of being chocolate, and a 12.5% chance of being cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms have a 50% chance of being cream, a 37.5% chance of being lilac, and a 12.5% chance of being fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have a 25% chance of being red, an 18.75% chance of being chocolate, a 6.25% chance of being cinnamon, a 25% chance of being cream, an 18.75% chance of being lilac, and a 6.25% chance of being fawn. ";
+        } else {
+          return "Toms have a 37.5% chance of being red, a 28.125% chance of being chocolate, a 9.375% chance of being cinnamon, a 12.5% chance of being cream, a 9.375% chance of being lilac, and a 3.125% chance of being fawn. ";
+        }
+      } else {
+        if (dilute() === "none dilute") {
+          return "Toms have a 50% chance of being red, a 25% chance of being black, a 12.5% chance of being chocolate, and a 12.5% chance of being cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Toms have a 50% chance of being red, a 25% chance of being gray, a 12.5% chance of being lilac, and a 12.5% chance of being fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Toms have a 25% chance of being red, a 12.5% chance of being black, a 6.25% chance of being chocolate, a 6.25% chance of being cinnamon, a 25% chance of being cream, a 12.5% chance of being gray, a 6.25% chance of being lilac, and a 6.25% chance of being fawn. ";
+        } else {
+          return "Toms have a 37.5% chance of being red, an 18.75% chance of being black, a 9.375% chance of being chocolate, a 9.375% chance of being cinnamon, a 12.5% chance of being cream, a 6.25% chance of being gray, a 3.125% chance of being lilac, and a 3.125% chance of being fawn. ";
+        }
+      }
+    }
+  }
+
+
+  function colorMolly() {
+    if (redMolly() === "all red") {
+      if (dilute() === "none dilute") {
+        return "Mollies will all be red.";
+      } else if (dilute() === "all dilute") {
+        return "Mollies will all be cream.";
+      } else if (dilute() === "half dilute") {
+        return "Mollies have a 50% chance of being red and a 50% chance of being cream.";
+      } else {
+        return "Mollies have a 75% chance of being red and a 25% chance of being cream.";
+      }
+    } else if (redMolly() === "none red") {
+      if (eumelanin() === "all black") {
+        if (dilute() === "none dilute") {
+          return "Mollies will all be black. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies will all be gray. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 50% chance of being black and a 50% chance of being gray. ";
+        } else {
+          return "Mollies have a 75% chance of being black and a 25% chance of being gray. ";
+        }
+      } else if (eumelanin() === "all chocolate") {
+        if (dilute() === "none dilute") {
+          return "Mollies will all be chocolate. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies will all be lilac. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 50% chance of being chocolate and a 50% chance of being lilac. ";
+        } else {
+          return "Mollies have a 75% chance of being chocolate and a 25% chance of being lilac. ";
+        }
+      } else if (eumelanin() === "all cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies will all be cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies will all be fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 50% chance of being cinnamon and a 50% chance of being fawn. ";
+        } else {
+          return "Mollies have a 75% chance of being cinnamon and a 25% chance of being fawn. ";
+        }
+      } else if (eumelanin() === "half chocolate") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being black and a 50% chance of being chocolate. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being gray and a 50% chance of being lilac. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have an even chance of being black, chocolate, gray, or lilac.";
+        } else {
+          return "Mollies have a 37.5% chance of being black, a 37.5% chance of being chocolate, a 12.5% chance of being gray, and a 12.5% chance of being lilac. ";
+        }
+      } else if (eumelanin() === "half cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being black and a 50% chance of being cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being gray and a 50% chance of being fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have an even chance of being black, cinnamon, gray, or fawn.";
+        } else {
+          return "Mollies have a 37.5% chance of being black, a 37.5% chance of being cinnamon, a 12.5% chance of being gray, and a 12.5% chance of being fawn. ";
+        }
+      } else if (eumelanin() === "half chocolate half cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being chocolate and a 50% chance of being cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being lilac and a 50% chance of being fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have an even chance of being chocolate, cinnamon, lilac, or fawn.";
+        } else {
+          return "Mollies have a 37.5% chance of being chocolate, a 37.5% chance of being cinnamon, a 12.5% chance of being lilac, and a 12.5% chance of being fawn. ";
+        }
+      } else if (eumelanin() === "25 chocolate") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 75% chance of being black and a 25% chance of being chocolate. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 75% chance of being gray and a 25% chance of being lilac. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 37.5% chance of being black, a 12.5% chance of being chocolate, a 37.5% chance of being gray, and a 12.5% chance of being lilac. ";
+        } else {
+          return "Mollies have a 56.25% chance of being black, an 18.75% chance of being chocolate, an 18.5% chance of being gray, and a 6.25% chance of being lilac. ";
+        }
+      } else if (eumelanin() === "25 cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 75% chance of being black and a 25% chance of being cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 75% chance of being gray and a 25% chance of being fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 37.5% chance of being black, a 12.5% chance of being cinnamon, a 37.5% chance of being gray, and a 12.5% chance of being fawn. ";
+        } else {
+          return "Mollies have a 56.25% chance of being black, an 18.75% chance of being cinnamon, an 18.5% chance of being gray, and a 6.25% chance of being fawn. ";
+        }
+      } else if (eumelanin() === "75 chocolate 25 cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 75% chance of being chocolate and a 25% chance of being cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 75% chance of being lilac and a 25% chance of being fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 37.5% chance of being chocolate, a 12.5% chance of being cinnamon, a 37.5% chance of being lilac, and a 12.5% chance of being fawn. ";
+        } else {
+          return "Mollies have a 56.25% chance of being chocolate, an 18.75% chance of being cinnamon, an 18.5% chance of being lilac, and a 6.25% chance of being fawn. ";
+        }
+      } else {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being black, a 25% chance of being chocolate, and a 25% chance of being cinnamon. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being gray, a 25% chance of being lilac, and a 25% chance of being fawn. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 25% chance of being black, a 12.5% chance of being chocolate, a 12.5% chance of being cinnamon, a 25% chance of being gray, a 12.5% chance of being lilac, and a 12.5% chance of being fawn. ";
+        } else {
+          return "Mollies have a 37.5% chance of being black, an 18.75% chance of being chocolate, an 18.75% chance of being cinnamon, a 12.5% chance of being gray, a 6.25% chance of being lilac, and a 6.25% chance of being fawn. ";
+        }
+      }
+    } else if (redMolly() === "all tortie") {
+      if (eumelanin() === "all black") {
+        if (dilute() === "none dilute") {
+          return "Mollies will all be tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies will all be dilute tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 50% chance of being tortoiseshell and a 50% chance of being dilute tortoiseshell. ";
+        } else {
+          return "Mollies have a 75% chance of being tortoiseshell and a 25% chance of being dilute tortoiseshell. ";
+        }
+      } else if (eumelanin() === "all chocolate") {
+        if (dilute() === "none dilute") {
+          return "Mollies will all be chocolate tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies will all be lilac-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 50% chance of being chocolate tortoiseshell and a 50% chance of being lilac-cream tortoiseshell. ";
+        } else {
+          return "Mollies have a 75% chance of being chocolate tortoiseshell and a 25% chance of being lilac-cream tortoiseshell. ";
+        }
+      } else if (eumelanin() === "all cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies will all be cinnamon tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies will all be fawn-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 50% chance of being cinnamon tortoiseshell and a 50% chance of being fawn-cream tortoiseshell. ";
+        } else {
+          return "Mollies have a 75% chance of being cinnamon tortoiseshell and a 25% chance of being fawn-cream tortoiseshell. ";
+        }
+      } else if (eumelanin() === "half chocolate") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being tortoiseshell and a 50% chance of being chocolate tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being dilute tortoiseshell and a 50% chance of being lilac-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have an even chance of being tortoiseshell, chocolate tortie, dilute tortie, or lilac-cream tortie.";
+        } else {
+          return "Mollies have a 37.5% chance of being tortoiseshell, a 37.5% chance of being chocolate tortie, a 12.5% chance of being dilute tortie, and a 12.5% chance of being lilac-cream tortie. ";
+        }
+      } else if (eumelanin() === "half cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being tortoiseshell and a 50% chance of being cinnamon tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being dilute tortoiseshell and a 50% chance of being fawn-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have an even chance of being tortoiseshell, cinnamon tortie, dilute tortie, or fawn-cream tortie.";
+        } else {
+          return "Mollies have a 37.5% chance of being tortoiseshell, a 37.5% chance of being cinnamon tortie, a 12.5% chance of being dilute tortie, and a 12.5% chance of being fawn-cream tortie. ";
+        }
+      } else if (eumelanin() === "half chocolate half cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being chocolate tortoiseshell and a 50% chance of being cinnamon tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being lilac-cream tortoiseshell and a 50% chance of being fawn-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have an even chance of being chocolate tortoiseshell, cinnamon tortoiseshell, lilac-cream tortie, or fawn-cream tortie.";
+        } else {
+          return "Mollies have a 37.5% chance of being chocolate tortoiseshell, a 37.5% chance of being cinnamon tortie, a 12.5% chance of being lilac-cream tortie, and a 12.5% chance of being fawn-cream tortie. ";
+        }
+      } else if (eumelanin() === "25 chocolate") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 75% chance of being tortoiseshell and a 25% chance of being chocolate tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 75% chance of being dilute tortoiseshell and a 25% chance of being lilac-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 37.5% chance of being tortoiseshell, a 12.5% chance of being chocolate tortie, a 37.5% chance of being dilute tortie, and a 12.5% chance of being lilac-cream tortie. ";
+        } else {
+          return "Mollies have a 56.25% chance of being tortoiseshell, an 18.75% chance of being chocolate tortie, an 18.5% chance of being dilute tortie, and a 6.25% chance of being lilac-cream tortie. ";
+        }
+      } else if (eumelanin() === "25 cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 75% chance of being tortoiseshell and a 25% chance of being cinnamon tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 75% chance of being dilute tortoiseshell and a 25% chance of being fawn-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 37.5% chance of being tortoiseshell, a 12.5% chance of being cinnamon tortie, a 37.5% chance of being dilute tortie, and a 12.5% chance of being fawn-cream tortie. ";
+        } else {
+          return "Mollies have a 56.25% chance of being tortoiseshell, an 18.75% chance of being cinnamon tortie, an 18.5% chance of being dilute tortie, and a 6.25% chance of being fawn-cream tortie. ";
+        }
+      } else if (eumelanin() === "75 chocolate 25 cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 75% chance of being chocolate tortoiseshell and a 25% chance of being cinnamon tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 75% chance of being lilac-cream tortoiseshell and a 25% chance of being fawn-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 37.5% chance of being chocolate tortoiseshell, a 12.5% chance of being cinnamon tortie, a 37.5% chance of being lilac-cream tortie, and a 12.5% chance of being fawn-cream tortie. ";
+        } else {
+          return "Mollies have a 56.25% chance of being chocolate tortoiseshell, an 18.75% chance of being cinnamon tortie, an 18.5% chance of being lilac-cream tortie, and a 6.25% chance of being fawn-cream tortie. ";
+        }
+      } else {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being tortoiseshell, a 25% chance of being chocolate tortoiseshell, and a 25% chance of being cinnamon tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being dilute tortoiseshell, a 25% chance of being lilac-cream tortie, and a 25% chance of being fawn-cream tortie. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 25% chance of being tortoiseshell, a 12.5% chance of being chocolate tortie, a 12.5% chance of being cinnamon tortie, a 25% chance of being dilute tortie, a 12.5% chance of being lilac-cream tortie, and a 12.5% chance of being fawn-cream tortie. ";
+        } else {
+          return "Mollies have a 37.5% chance of being tortoiseshell, an 18.75% chance of being chocolate tortie, an 18.75% chance of being cinnamon tortie, a 12.5% chance of being dilute tortie, a 6.25% chance of being lilac-cream tortie, and a 6.25% chance of being fawn-cream tortie. ";
+        }
+      }
+
+      // break!
+
+    } else if (redMolly() === "half red half tortie") {
+      if (eumelanin() === "all black") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being red and a 50% chance of being tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being cream and a 50% chance of being dilute tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have an even chance of being red, tortoiseshell, cream, or dilute tortie.";
+        } else {
+          return "Mollies have a 37.5% chance of being red, a 37.5% chance of being tortoiseshell, a 12.5% chance of being cream, and a 12.5% chance of being dilute tortie. ";
+        }
+      } else if (eumelanin() === "all chocolate") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being red and a 50% chance of being chocolate tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being cream and a 50% chance of being lilac-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have an even chance of being red, chocolate tortoiseshell, cream, or lilac-cream tortie.";
+        } else {
+          return "Mollies have a 37.5% chance of being red, a 37.5% chance of being chocolate tortoiseshell, a 12.5% chance of being cream, and a 12.5% chance of being lilac-cream tortie. ";
+        }
+      } else if (eumelanin() === "all cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being red and a 50% chance of being cinnamon tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being cream and a 50% chance of being fawn-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have an even chance of being red, cinnamon tortoiseshell, cream, or fawn-cream tortie.";
+        } else {
+          return "Mollies have a 37.5% chance of being red, a 37.5% chance of being cinnamon tortoiseshell, a 12.5% chance of being cream, and a 12.5% chance of being fawn-cream tortie. ";
+        }
+      } else if (eumelanin() === "half chocolate") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being red, a 25% chance of being tortoiseshell, and a 25% chance of being chocolate tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being cream, a 25% chance of being dilute tortoiseshell, and a 25% chance of being lilac-cream tortie. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 25% chance of being red, a 12.5% chance of being tortoiseshell, a 12.5% chance of being chocolate tortie, a 25% chance of being cream, a 12.5% chance of being dilute tortie, and a 12.5% chance of being lilac-cream tortie. ";
+        } else {
+          return "Mollies have a 37.5% chance of being red, an 18.75% chance of being tortoiseshell, an 18.75% chance of being chocolate tortie, a 12.5% chance of being cream, a 6.25% chance of being dilute tortie, and a 6.25% chance of being lilac-cream tortie. ";
+        }
+      } else if (eumelanin() === "half cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being red, a 25% chance of being tortoiseshell, and a 25% chance of being cinnamon tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being cream, a 25% chance of being dilute tortoiseshell, and a 25% chance of being fawn-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 25% chance of being red, a 12.5% chance of being tortoiseshell, a 12.5% chance of being cinnamon tortie, a 25% chance of being cream, a 12.5% chance of being dilute tortie, and a 12.5% chance of being fawn-cream tortie. ";
+        } else {
+          return "Mollies have a 37.5% chance of being red, an 18.75% chance of being tortoiseshell, an 18.75% chance of being cinnamon tortie, a 12.5% chance of being cream, a 6.25% chance of being dilute tortie, and a 6.25% chance of being fawn-cream tortie. ";
+        }
+      } else if (eumelanin() === "half chocolate half cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being red, a 25% chance of being chocolate tortoiseshell, and a 25% chance of being cinnamon tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being cream, a 25% chance of being lilac-cream tortoiseshell, and a 25% chance of being fawn-cream tortie. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 25% chance of being red, a 12.5% chance of being chocolate tortoiseshell, a 12.5% chance of being cinnamon tortie, a 25% chance of being cream, a 12.5% chance of being lilac-cream tortie, and a 12.5% chance of being fawn-cream tortie. ";
+        } else {
+          return "Mollies have a 37.5% chance of being red, an 18.75% chance of being chocolate tortoiseshell, an 18.75% chance of being cinnamon tortie, a 12.5% chance of being cream, a 6.25% chance of being lilac-cream tortie, and a 6.25% chance of being fawn-cream tortie. ";
+        }
+      } else if (eumelanin() === "25 chocolate") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being red, a 37.5% chance of being tortoiseshell, and a 12.5% chance of being chocolate tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being cream, a 37.5% chance of being dilute tortoiseshell, and a 12.5% chance of being lilac-cream tortie. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 25% chance of being red, an 18.75% chance of being tortoiseshell, a 6.25% chance of being chocolate tortie, a 25% chance of being cream, an 18.75% chance of being dilute tortie, and a 6.25% chance of being lilac-cream tortie. ";
+        } else {
+          return "Mollies have a 37.5% chance of being red, a 28.125% chance of being tortoiseshell, a 9.375% chance of being chocolate tortie, a 12.5% chance of being cream, a 9.375% chance of being dilute tortie, and a 3.125% chance of being lilac-cream tortie. ";
+        }
+      } else if (eumelanin() === "25 cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being red, a 37.5% chance of being tortoiseshell, and a 12.5% chance of being cinnamon tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being cream, a 37.5% chance of being dilute tortoiseshell, and a 12.5% chance of being fawn-cream tortie. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 25% chance of being red, an 18.75% chance of being tortoiseshell, a 6.25% chance of being cinnamon tortie, a 25% chance of being cream, an 18.75% chance of being dilute tortie, and a 6.25% chance of being fawn-cream tortie. ";
+        } else {
+          return "Mollies have a 37.5% chance of being red, a 28.125% chance of being tortoiseshell, a 9.375% chance of being cinnamon tortie, a 12.5% chance of being cream, a 9.375% chance of being dilute tortie, and a 3.125% chance of being fawn-cream tortie. ";
+        }
+      } else if (eumelanin() === "75 chocolate 25 cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being red, a 37.5% chance of being chocolate tortoiseshell, and a 12.5% chance of being cinnamon tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being cream, a 37.5% chance of being lilac-cream tortoiseshell, and a 12.5% chance of being fawn-cream tortie. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 25% chance of being red, an 18.75% chance of being chocolate tortoiseshell, a 6.25% chance of being cinnamon tortie, a 25% chance of being cream, an 18.75% chance of being lilac-cream tortie, and a 6.25% chance of being fawn-cream tortie. ";
+        } else {
+          return "Mollies have a 37.5% chance of being red, a 28.125% chance of being chocolate tortoiseshell, a 9.375% chance of being cinnamon tortie, a 12.5% chance of being cream, a 9.375% chance of being lilac-cream tortie, and a 3.125% chance of being fawn-cream tortie. ";
+        }
+      } else {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being red, a 25% chance of being tortoiseshell, a 12.5% chance of being chocolate tortie, and a 12.5% chance of being cinnamon tortie. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being red, a 25% chance of being dilute tortoiseshell, a 12.5% chance of being lilac-cream tortie, and a 12.5% chance of being fawn-cream tortie. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 25% chance of being red, a 12.5% chance of being tortoiseshell, a 6.25% chance of being chocolate tortie, a 6.25% chance of being cinnamon tortie, a 25% chance of being cream, a 12.5% chance of being dilute tortie, a 6.25% chance of being lilac-cream tortie, and a 6.25% chance of being fawn-cream tortie. ";
+        } else {
+          return "Mollies have a 37.5% chance of being red, an 18.75% chance of being tortoiseshell, a 9.375% chance of being chocolate tortie, a 9.375% chance of being cinnamon tortie, a 12.5% chance of being cream, a 6.25% chance of being dilute tortie, a 3.125% chance of being lilac-cream tortie, and a 3.125% chance of being fawn-cream tortie. ";
+        }
+      }
+
+      //break!
+      //this is half tortie
+    } else {
+      if (eumelanin() === "all black") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being black and a 50% chance of being tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being gray and a 50% chance of being dilute tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have an even chance of being black, tortoiseshell, gray, or dilute tortie.";
+        } else {
+          return "Mollies have a 37.5% chance of being black, a 37.5% chance of being tortoiseshell, a 12.5% chance of being gray, and a 12.5% chance of being dilute tortie. ";
+        }
+      } else if (eumelanin() === "all chocolate") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being chocolate and a 50% chance of being chocolate tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being lilac and a 50% chance of being lilac-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have an even chance of being chocolate, chocolate tortoiseshell, lilac, or lilac-cream tortie.";
+        } else {
+          return "Mollies have a 37.5% chance of being chocolate, a 37.5% chance of being chocolate tortoiseshell, a 12.5% chance of being lilac, and a 12.5% chance of being lilac-cream tortie. ";
+        }
+      } else if (eumelanin() === "all cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 50% chance of being cinnamon and a 50% chance of being cinnamon tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 50% chance of being fawn and a 50% chance of being fawn-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have an even chance of being cinnamon, cinnamon tortoiseshell, fawn, or fawn-cream tortie.";
+        } else {
+          return "Mollies have a 37.5% chance of being cinnamon, a 37.5% chance of being cinnamon tortoiseshell, a 12.5% chance of being fawn, and a 12.5% chance of being fawn-cream tortie. ";
+        }
+      } else if (eumelanin() === "half chocolate") {
+        if (dilute() === "none dilute") {
+          return "Mollies have an even chance of being black, tortoiseshell, chocolate, or chocolate tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have an even chance of being gray, dilute tortoiseshell, lilac, or lilac-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have an even chance of being black, tortoiseshell, chocolate, chocolate tortie, gray, dilute tortie, lilac, or lilac-cream tortie. ";
+        } else {
+          return "Mollies have an 18.75% chance of being black, an 18.75% chance of being tortoiseshell, an 18.75% chance of being chocolate, an 18.75% chance of being chocolate tortie, a 6.25% chance of being gray, a 6.25% chance of being dilute tortie, a 6.25% chance of being lilac, and a 6.25% chance of being lilac-cream tortie. ";
+        }
+      } else if (eumelanin() === "half cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have an even chance of being black, tortoiseshell, cinnamon, or cinnamon tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have an even chance of being gray, dilute tortoiseshell, fawn, or fawn-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have an even chance of being black, tortoiseshell, cinnamon, cinnamon tortie, gray, dilute tortie, fawn, or fawn-cream tortie. ";
+        } else {
+          return "Mollies have an 18.75% chance of being black, an 18.75% chance of being tortoiseshell, an 18.75% chance of being cinnamon, an 18.75% chance of being cinnamon tortie, a 6.25% chance of being gray, a 6.25% chance of being dilute tortie, a 6.25% chance of being fawn, and a 6.25% chance of being fawn-cream tortie. ";
+        }
+      } else if (eumelanin() === "half chocolate half cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have an even chance of being chocolate, chocolate tortoiseshell, cinnamon, or cinnamon tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have an even chance of being lilac, lilac-cream tortoiseshell, fawn, or fawn-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have an even chance of being chocolate, chocolate tortoiseshell, cinnamon, cinnamon tortie, lilac, lilac-cream tortie, fawn, or fawn-cream tortie. ";
+        } else {
+          return "Mollies have an 18.75% chance of being chocolate, an 18.75% chance of being chocolate tortoiseshell, an 18.75% chance of being cinnamon, an 18.75% chance of being cinnamon tortie, a 6.25% chance of being lilac, a 6.25% chance of being lilac-cream tortie, a 6.25% chance of being fawn, and a 6.25% chance of being fawn-cream tortie. ";
+        }
+      } else if (eumelanin() === "25 chocolate") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 37.5% chance of being black, a 37.5% chance of being tortoiseshell, a 12.5% chance of being chocolate, and a 12.5% chance of being chocolate tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 37.5% chance of being gray, a 37.5% chance of being dilute tortoiseshell, a 12.5% chance of being lilac, and a 12.5% chance of being lilac-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 18.75% chance of being black, an 18.75% chance of being tortoiseshell, a 6.25% chance of being chocolate, a 6.25% chance of being chocolate tortie, an 18.75% chance of being gray, an 18.75% chance of being dilute tortie, a 6.25% chance of being lilac, and a 6.25% chance of being lilac-cream tortie. ";
+        } else {
+          return "Mollies have a 28.125% chance of being black, a 28.125% chance of being tortoiseshell, a 9.375% chance of being chocolate, a 9.375% chance of being chocolate tortie, a 9.375% chance of being gray, a 9.375% chance of being dilute tortie, a 3.125% chance of being lilac, and a 3.125% chance of being lilac-cream tortie. ";
+        }
+      } else if (eumelanin() === "25 cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 37.5% chance of being black, a 37.5% chance of being tortoiseshell, a 12.5% chance of being cinnamon, and a 12.5% chance of being cinnamon tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 37.5% chance of being gray, a 37.5% chance of being dilute tortoiseshell, a 12.5% chance of being fawn, and a 12.5% chance of being fawn-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 18.75% chance of being black, an 18.75% chance of being tortoiseshell, a 6.25% chance of being cinnamon, a 6.25% chance of being cinnamon tortie, an 18.75% chance of being gray, an 18.75% chance of being dilute tortie, a 6.25% chance of being fawn, and a 6.25% chance of being fawn-cream tortie. ";
+        } else {
+          return "Mollies have a 28.125% chance of being black, a 28.125% chance of being tortoiseshell, a 9.375% chance of being cinnamon, a 9.375% chance of being cinnamon tortie, a 9.375% chance of being gray, a 9.375% chance of being dilute tortie, a 3.125% chance of being fawn, and a 3.125% chance of being fawn-cream tortie. ";
+        }
+      } else if (eumelanin() === "75 chocolate 25 cinnamon") {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 37.5% chance of being chocolate, a 37.5% chance of being chocolate tortoiseshell, a 12.5% chance of being cinnamon, and a 12.5% chance of being cinnamon tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 37.5% chance of being lilac, a 37.5% chance of being lilac-cream tortoiseshell, a 12.5% chance of being fawn, and a 12.5% chance of being fawn-cream tortoiseshell. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 18.75% chance of being chocolate, an 18.75% chance of being chocolate tortoiseshell, a 6.25% chance of being cinnamon, a 6.25% chance of being cinnamon tortie, an 18.75% chance of being lilac, an 18.75% chance of being lilac-cream tortie, a 6.25% chance of being fawn, and a 6.25% chance of being fawn-cream tortie. ";
+        } else {
+          return "Mollies have a 28.125% chance of being chocolate, a 28.125% chance of being chocolate tortoiseshell, a 9.375% chance of being cinnamon, a 9.375% chance of being cinnamon tortie, a 9.375% chance of being lilac, a 9.375% chance of being lilac-cream tortie, a 3.125% chance of being fawn, and a 3.125% chance of being fawn-cream tortie. ";
+        }
+      } else {
+        if (dilute() === "none dilute") {
+          return "Mollies have a 25% chance of being black, a 25% chance of being tortoiseshell, a 12.5% chance of being chocolate, a 12.5% chance of being chocolate tortoiseshell, a 12.5% chance of being cinnamon, and a 12.5% chance of being cinnamon tortoiseshell. ";
+        } else if (dilute() === "all dilute") {
+          return "Mollies have a 25% chance of being gray, a 25% chance of being dilute tortoiseshell, a 12.5% chance of being lilac, a 12.5% chance of being lilac-cream tortie, a 12.5% chance of being fawn, and a 12.5% chance of being fawn-cream tortie. ";
+        } else if (dilute() === "half dilute") {
+          return "Mollies have a 12.5% chance of being black, a 12.5% chance of being tortoiseshell, a 6.25% chance of being chocolate, a 6.25% chance of being chocolate tortoiseshell, a 6.25% chance of being cinnamon, a 6.25% chance of being cinnamon tortoiseshell, a 12.5% chance of being gray, a 12.5% chance of being dilute tortoiseshell, a 6.25% chance of being lilac, a 6.25% chance of being lilac-cream tortie, a 6.25% chance of being fawn, and a 6.25% chance of being fawn-cream tortie. ";
+        } else {
+          return "Mollies have an 18.75% chance of being black, an 18.75% chance of being tortoiseshell, a 9.375% chance of being chocolate, a 9.375% chance of being chocolate tortoiseshell, a 9.375% chance of being cinnamon, a 9.375% chance of being cinnamon tortoiseshell, a 6.25% chance of being gray, a 6.25% chance of being dilute tortoiseshell, a 3.125% chance of being lilac, a 3.125% chance of being lilac-cream tortie, a 3.125% chance of being fawn, and a 3.125% chance of being fawn-cream tortie. ";
+        }
+      }
+    }
+  }
+
+  function caramel() {
+    var caramel1 = document.getElementById("caramel1").value;
+    var caramel2 = document.getElementById("caramel2").value;
+    var text = "";
+    if (caramel1 === "nocaramel" && caramel2 === 'nocaramel') {
+      return '';
+    } else if (caramel1 === "caramel" || caramel2 === 'caramel') {
+      return ' Dilute kittens will have a caramelized effect. ';
+    } else if (caramel1 === "nocaramel" || caramel2 === "nocaramel") {
+      return ' Dilute kittens have a 50% chance of having a caramelized color. ';
+    } else {
+      return ' Dilute kittens have a 75% chance of having a caramelized color. ';
+    }
+  }
+
+  function amber() {
+    var amber1 = document.getElementById("amber1").value;
+    var amber2 = document.getElementById("amber2").value;
+    var text = "";
+    if (amber1 === "amber" && amber2 === 'amber') {
+      return 'All offspring will turn amber.';
+    } else if (amber1 === "noamber" || amber2 === 'noamber') {
+      return '';
+    } else if (amber1 === "amber" || amber2 === "amber") {
+      return 'Offspring have a 50% chance of turning amber.';
+    } else {
+      return 'Offspring have a 25% chance of turning amber.';
+    }
+  }
+
+	function agouti() {
+ 		var agouti1 = document.getElementById("agouti1").value;
+    var agouti2 = document.getElementById("agouti2").value;
+    var text = "";
+    if (agouti1 === "agouti" || agouti2 === "agouti") {
+        return "Offspring ";
+    } else if (agouti1 === "noagouti" && agouti2 === "noagouti") {
+        return "Offspring will all be solid, except for red-based cats. Red-based cats ";
+    } else if (agouti1 === "twilight" || agouti2 === "twilight") {
+				if (agouti1 === "twilight" && agouti2 === "twilight"){
+        	return "Offspring will all be \"twilight\" tabbies. They ";
+        } else if (agouti1 === "bengal" || agouti2 === "bengal"){
+        	return "Offspring have a 75% chance of being \"twilight\" tabby. They ";
+        } else if (agouti1 === "charcoal" || agouti2 === "charcoal"){
+        	return "Offspring have a 50% chance of being charcoal tabby and a 50% chance of being \"twilight\" tabby. They ";
+        }	else if (agouti1 === "agoutihet" || agouti2 === "agoutihet"){
+        	return "Offspring have a 50% chance of being charcoal tabby. They ";
+        } else {
+        	return "Offspring will all be charcoal tabby. They ";
+        }
+    } else if (agouti1 === "bengal" || agouti2 === "bengal"){
+    	if (agouti1 === "bengal" && agouti2 === "bengal"){
+        	return "Offspring have a 25% chance of being \"twilight\" tabby. They ";
+        } else if (agouti1 === "charcoal" || agouti2 === "charcoal"){
+        	return "Offspring have a 25% chance of being charcoal tabby and a 25% chance of being \"twilight\" tabby. They ";
+        }	else if (agouti1 === "agoutihet" || agouti2 === "agoutihet"){
+        	return "Offspring have a 25% chance of being charcoal tabby. They ";
+        } else {
+        	return "Offspring have a 50% chance of being charcoal tabby. They ";
+        }
+    } else if (agouti1 === "charcoal" || agouti2 === "charcoal"){
+    		if (agouti1 === "charcoal" && agouti2 === "charcoal"){
+        	return "Offspring have a 25% chance of being solid (except red-based cats), a 50% chance of being charcoal tabby, and a 25% chance of being \"twilight\" tabby. Tabbies ";
+        }	else if (agouti1 === "agoutihet" || agouti2 === "agoutihet"){
+        	return "Offspring have a 25% chance of being solid (except red-based cats) and a 25% chance of being charcoal tabby. Tabbies ";
+        } else {
+        	return "Offspring have a 50% chance of being solid and a 50% chance of being charcoal tabby. Tabbies ";
+        }
+    } else if (agouti1 === "agoutihet" || agouti2 === "agoutihet"){
+    	if (agouti1 === "agoutihet" && agouti2 === "agoutihet"){
+        	return "Offspring have a 25% chance of being solid. Tabbies ";
+        } else {
+        	return "Offspring have a 50% chance of being solid. Tabbies ";
+        }
+    }
+				
+  }
+
+
+  function tabby() {
+    var tabby1 = document.getElementById("tabby1").value;
+    var tabby2 = document.getElementById("tabby2").value;
+    var spot1 = document.getElementById("spot1").value;
+    var spot2 = document.getElementById("spot2").value;
+    var tick1 = document.getElementById("tick1").value;
+    var tick2 = document.getElementById("tick2").value;
+    var text = "";
+
+    if (tick1 === "tick" || tick2 === "tick") {
+    	return "will all be ticked tabby.";
+    } else if (tick1 === "tickhet" && tick2 === "tickhet") {
+      if (tabby1 === "classic" && tabby2 === "classic") {
+        return "have a 75% chance of being ticked tabby and a 25% chance of being classic tabby."
+      } else if (tabby1 === "mackerel" || tabby2 === "mackerel") {
+        if (spot1 === "spot" || spot2 === "spot") {
+          if (spot1 === "spot" && spot2 === "spot") {
+            return "have a 75% chance of being ticked tabby and a 25% chance of being spotted tabby."
+          } else if (spot1 === "spothet" || spot2 === "spothet") {
+            return "have a 75% chance of being ticked tabby, a 25% chance of being spotted tabby, and a 25% chance of being broken mackerel.";
+          } else {
+            return "have a 75% chance of being ticked tabby and a 25% chance of being broken mackerel.";
+          }
+        } else if (spot1 === "spothet" || spot2 === "spothet") {
+          if (spot1 === "spothet" && spot2 === "spothet") {
+            return "have a 75% chance of being ticked tabby, a 6.25% chance of being spotted tabby, a 12.5% chance of being broken mackerel, and a 6.25% chance of being mackerel tabby.";
+          } else {
+     				return "have a 75% chance of being ticked tabby, a 12.5% chance of being broken mackerel, and a 12.5% chance of being mackerel tabby.";
+          }
+        } else {
+          return "have a 75% chance of being ticked tabby and a 25% chance of being mackerel tabby.";
+        }
+      } else if (tabby1 === "mackerelhet" && tabby2 === "mackerelhet") {
+        if (spot1 === "spot" || spot2 === "spot") {
+          if (spot1 === "spot" && spot2 === "spot") {
+            return "have a 75% chance of being ticked tabby, an 18.75% chance of being spotted tabby, and a 6.25% chance of being classic tabby.";
+          } else if (spot1 === "spothet" || spot2 === "spothet") {
+            return "have a 75% chance of being ticked tabby, a 9.375% chance of being spotted tabby, a 9.375% chance of being broken mackerel, and a 6.25% chance of being classic tabby.";
+          } else {
+            return "have a 75% chance of being ticked tabby, and 18.75% chance of being broken mackerel, and a 6.25% chance of being classic tabby.";
+          }
+        } else if (spot1 === "spothet" || spot2 === "spothet") {
+          if (spot1 === "spothet" && spot2 === "spothet") {
+            return "have a 75% chance of being ticked tabby,  a 4.6875% chance of being spotted tabby, a 9.375% chance of being broken mackerel, a 4.6875% chance of being mackerel tabby, and a 6.25% chance of being classic tabby.";
+          } else {
+            return "have a 75% chance of being ticked tabby, a 9.375% chance of being broken mackerel, a 9.375% chance of being mackerel tabby, and a 6.25% chance of being classic tabby.";
+          }
+        } else {
+          return "have a 75% chance of being ticked tabby, an 18.75% chance of being mackerel tabby, and a 6.25% chance of being classic tabby.";
+        }
+      } else {
+        if (spot1 === "spot" || spot2 === "spot") {
+          if (spot1 === "spot" && spot2 === "spot") {
+            return "have a 75% chance of being ticked tabby, a 25% chance of being spotted tabby, and a 25% chance of being classic tabby.";
+          } else if (spot1 === "spothet" || spot2 === "spothet") {
+            return "have a 75% chance of being ticked tabby, a 12.5% chance of being spotted tabby, a 12.5% chance of being broken mackerel, and a 25% chance of being classic tabby.";
+          } else {
+            return "have a 75% chance of being ticked tabby, a 25% chance of being broken mackerel, and a 25% chance of being classic tabby.";
+          }
+        } else if (spot1 === "spothet" || spot2 === "spothet") {
+          if (spot1 === "spothet" && spot2 === "spothet") {
+            return "have a 75% chance of being ticked tabby, a 6.25% chance of being spotted tabby, a 12.5% chance of being broken mackerel, a 6.25% chance of being mackerel tabby, and a 25% chance of being classic tabby.";
+          } else {
+            return "have a 75% chance of being ticked tabby, a 12.5% chance of being broken mackerel, a 12.5% chance of being mackerel tabby, and a 25% chance of being classic tabby.";
+          }
+        } else {
+          return "have a 75% chance of being ticked tabby, a 25% chance of being mackerel tabby, and a 25% chance of being classic tabby.";
+        }
+      }
+    } else if (tick1 === "tickhet" || tick2 === "tickhet") {
+      if (tabby1 === "classic" && tabby2 === "classic") {
+        return "have a 50% chance of being ticked tabby and a 50% chance of being classic tabby.";
+      } else if (tabby1 === "mackerel" || tabby2 === "mackerel") {
+        if (spot1 === "spot" || spot2 === "spot") {
+          if (spot1 === "spot" && spot2 === "spot") {
+            return "have a 50% chance of being ticked tabby and a 50% chance of being spotted tabby.";
+          } else if (spot1 === "spothet" || spot2 === "spothet") {
+            return "have a 50% chance of being ticked tabby, a 25% chance of being spotted tabby, and a 25% chance of being broken mackerel.";
+          } else {
+            return "have a 50% chance of being ticked tabby and a 50% chance of being broken mackerel.";
+          }
+        } else if (spot1 === "spothet" || spot2 === "spothet") {
+          if (spot1 === "spothet" && spot2 === "spothet") {
+            return "have a 50% chance of being ticked tabby, a 12.5% chance of being spotted tabby, a 25% chance of being broken mackerel, and a 12.5% chance of being mackerel tabby.";
+          } else {
+            return "have a 50% chance of being ticked tabby, a 25% chance of being broken mackerel, and a 25% chance of being mackerel tabby.";
+          }
+        } else {
+          return "have a 50% chance of being ticked tabby and a 50% chance of being mackerel tabby."
+        }
+      } else if (tabby1 === "mackerelhet" && tabby2 === "mackerelhet") {
+        if (spot1 === "spot" || spot2 === "spot") {
+          if (spot1 === "spot" && spot2 === "spot") {
+            return "have a 50% chance of being ticked tabby, a 37.5% chance of being spotted tabby, and a 12.5% chance of being classic tabby.";
+          } else if (spot1 === "spothet" || spot2 === "spothet") {
+            return "have a 50% chance of being ticked tabby, an 18.75% chance of being spotted tabby, an 18.75% chance of being broken mackerel, and a 12.5% chance of being classic tabby.";
+          } else {
+            return "have a 50% chance of being ticked tabby, a 37.5% chance of being broken mackerel, and a 12.5% chance of being classic tabby.";
+          }
+        } else if (spot1 === "spothet" || spot2 === "spothet") {
+          if (spot1 === "spothet" && spot2 === "spothet") {
+            return "have a 50% chance of being ticked tabby, a 9.375% chance of being spotted tabby, an 18.75% chance of being broken mackerel, a 9.375% chance of being mackerel tabby, and a 12.5% chance of being classic tabby.";
+          } else {
+            return "have a 50% chance of being ticked tabby, an 18.75% chance of being broken mackerel, an 18.75% chance of being mackerel tabby, and a 12.5% chance of being classic tabby.";
+          }
+        } else {
+          return "have a 50% chance of being ticked tabby, a 37.5% chance of being mackerel tabby, and a 12.5% chance of being classic tabby.";
+        }
+      } else {
+        if (spot1 === "spot" || spot2 === "spot") {
+          if (spot1 === "spot" && spot2 === "spot") {
+            return "have a 50% chance of being ticked tabby, a 25% chance of being spotted tabby, and a 25% chance of being classic tabby.";
+          } else if (spot1 === "spothet" || spot2 === "spothet") {
+            return "have a 50% chance of being ticked tabby, a 12.5% chance of being spotted tabby, a 12.5% chance of being broken mackerel, and a 25% chance of being classic tabby.";
+          } else {
+            return "have a 50% chance of being ticked tabby, a 25% chance of being broken mackerel, and a 25% chance of being classic tabby.";
+          }
+        } else if (spot1 === "spothet" || spot2 === "spothet") {
+          if (spot1 === "spothet" && spot2 === "spothet") {
+            return "have a 50% chance of being ticked tabby, a 6.25% chance of being spotted tabby, a 12.5% chance of being broken mackerel, a 6.25% chance of being mackerel tabby, and a 25% chance of being classic tabby.";
+          } else {
+            return "have a 50% chance of being ticked tabby, a 12.5% chance of being broken mackerel, a 12.5% chance of being mackerel tabby, and a 25% chance of being classic tabby.";
+          }
+        } else {
+          return "have a 50% chance of being ticked tabby, a 25% chance of being mackerel tabby, and a 25% chance of being classic tabby.";
+        }
+      }
+    } else {
+       if (tabby1 === "classic" && tabby2 === "classic") {
+        	return "will all be classic tabby.";
+      } else if (tabby1 === "mackerel" || tabby2 === "mackerel") {
+        if (spot1 === "spot" || spot2 === "spot") {
+          if (spot1 === "spot" && spot2 === "spot") {
+            return "will all be spotted tabby.";
+          } else if (spot1 === "spothet" || spot2 === "spothet") {
+            return "have a 50% chance of being spotted tabby and a 50% chance of being broken mackerel.";
+          } else {
+            return "will all be broken mackerel tabby.";
+          }
+        } else if (spot1 === "spothet" || spot2 === "spothet") {
+          if (spot1 === "spothet" && spot2 === "spothet") {
+            return "have a 25% chance of being spotted tabby, a 50% chance of being broken mackerel, and a 25% chance of being mackerel tabby.";
+          } else {
+            return "have a 50% chance of being broken mackerel and a 50% chance of being mackerel tabby."
+          }
+        } else {
+          return "will all be mackerel tabby."
+        }
+      } else if (tabby1 === "mackerelhet" && tabby2 === "mackerelhet") {
+        if (spot1 === "spot" || spot2 === "spot") {
+          if (spot1 === "spot" && spot2 === "spot") {
+            return "have a 75% chance of being spotted tabby and a 25% chance of being classic tabby.";
+          } else if (spot1 === "spothet" || spot2 === "spothet") {
+            return "have a 37.5% chance of being spotted tabby, a 37.5% chance of being broken mackerel, and a 25% chance of being classic tabby.";
+          } else {
+            return "have a 75% chance of being broken mackerel and a 25% chance of being classic tabby.";
+          }
+        } else if (spot1 === "spothet" || spot2 === "spothet") {
+          if (spot1 === "spothet" && spot2 === "spothet") {
+          	return "have an 18.75% chance of being spotted tabby, a 37.5% chance of being broken mackerel, an 18.75% chance of being mackerel tabby, and a 25% chance of being classic tabby.";
+          } else {
+            return "have a 37.5% chance of being broken mackerel, a 37.5% chance of being mackerel tabby, and a 25% chance of being classic tabby.";
+          }
+        } else {
+          return "have a 75% chance of being mackerel tabby and a 25% chance of being classic tabby.";
+        }
+      } else {
+        if (spot1 === "spot" || spot2 === "spot") {
+          if (spot1 === "spot" && spot2 === "spot") {
+            return "have a 50% chance of being spotted tabby and a 50% chance of being classic tabby.";
+          } else if (spot1 === "spothet" || spot2 === "spothet") {
+            return "have a 25% chance of being spotted tabby, a 25% chance of being broken mackerel, and a 50% chance of being classic tabby.";
+          } else {
+            return "have a 50% chance of being broken mackerel and a 50% chance of being classic tabby.";
+          }
+        } else if (spot1 === "spothet" || spot2 === "spothet") {
+          if (spot1 === "spothet" && spot2 === "spothet") {
+            return "have a 12.5% chance of being spotted tabby, a 25% chance of being broken mackerel, a 12.5% chance of being mackerel tabby, and a 50% chance of being classic tabby.";
+          } else {
+            return "have a 25% chance of being broken mackerel, a 25% chance of being mackerel tabby, and a 50% chance of being classic tabby.";
+          }
+        } else {
+          return "have a 50% chance of being mackerel tabby and a 50% chance of being classic tabby";
+        }
+      }
+    }
+  }
+ 
+ 	function bengal() {
+  	var bengal1 = document.getElementById("bengal1").value;
+    var bengal2 = document.getElementById("bengal2").value;
+    var text = "";
+    if (bengal1 === "nobengal" && bengal2 === "nobengal"){
+    	return "";
+    } else if (bengal1 === "bengal" || bengal2 === "bengal"){
+    	return "All tabbies will have the Bengal/Toyger versions of these patterns."; 
+    } else if (bengal1 === "bengalhet" && bengal2 === "bengalhet"){
+    	return "Tabbies have a 75% chance of having the Bengal/Toyger versions of these patterns.";
+    } else {
+    	return "Tabbies have 50% chance of having the Bengal/Toyger versions of these patterns."
+    }
+  }
+
+  function silver() {
+    var silver1 = document.getElementById("silver1").value;
+    var silver2 = document.getElementById("silver2").value;
+    var wideband1 = document.getElementById("wideband1").value;
+    var wideband2 = document.getElementById("wideband2").value;
+    var text = "";
+
+    if (silver1 === "silver" || silver2 === 'silver') {
+      if (wideband1 === "wideband" || wideband2 === 'wideband') {
+        return "Tabbies will be silver tabby/shaded, solids will be smoke.";
+      } else if (wideband1 === "nowideband" && wideband2 === 'nowideband') {
+        return "Tabbies will be silver tabby, solids will be smoke.";
+      } else if (wideband1 === "widebandhet" && wideband2 === "widebandhet") {
+        return "Tabbies will be silver tabby/shaded, solids will be smoke.";
+      } else {
+        return "Tabbies will be silver tabby/shaded, solids will be smoke.";
+      }
+    } else if (silver1 === "nosilver" && silver2 === 'nosilver') {
+      if (wideband1 === "wideband" || wideband2 === 'wideband') {
+        return "Tabbies will be golden tabby/shaded.";
+      } else if (wideband1 === "nowideband" && wideband2 === 'nowideband') {
+        return "";
+      } else if (wideband1 === "widebandhet" && wideband2 === "widebandhet") {
+        return "Tabbies have a 75% chance of being golden tabby/shaded.";
+      } else {
+        return "Tabbies have a 50% chance of being golden tabby/shaded.";
+      }
+    } else if (silver1 === "silverhet" && silver2 === "silverhet") {
+      if (wideband1 === "wideband" || wideband2 === 'wideband') {
+        return "Tabbies have a 75% chance of being silver tabby/shaded and a 25% chance of being golden tabby/shaded. Solids have a 75% chance of being smoke.";
+      } else if (wideband1 === "nowideband" && wideband2 === 'nowideband') {
+        return "Tabbies have a 75% chance of being silver tabby. Solids have a 75% chance of being smoke.";
+      } else if (wideband1 === "widebandhet" && wideband2 === "widebandhet") {
+        return "Tabbies have a 75% chance of being silver tabby/shaded and an 18.75% chance of being golden tabby/shaded. Solids have a 75% chance of being smoke.";
+      } else {
+        return "Tabbies have a 75% chance of being silver tabby/shaded and a 12.5% chance of being golden tabby/shaded. Solids have a 75% chance of being smoke.";
+      }
+    } else {
+      if (wideband1 === "wideband" || wideband2 === 'wideband') {
+        return "Tabbies have a 50% chance of being silver tabby/shaded and a 50% chance of being golden tabby/shaded. Solids have a 50% chance of being smoke.";
+      } else if (wideband1 === "nowideband" && wideband2 === 'nowideband') {
+        return "Tabbies have a 50% chance of being silver tabby, solids have a 50% chance of being smoke.";
+      } else if (wideband1 === "widebandhet" && wideband2 === "widebandhet") {
+        return "Tabbies have a 50% chance of being silver tabby/shaded and a 37.5% chance of being golden tabby/shaded. Solids have a 50% chance of being smoke.";
+      } else {
+        return "Tabbies have a 50% chance of being silver tabby/shaded and a 25% chance of being golden tabby/shaded. Solids have a 50% chance of being smoke.";
+      }
+    }
+
+  }
+
+  function colorpoint() {
+    var point1 = document.getElementById("point1").value;
+    var point2 = document.getElementById("point2").value;
+    var text = "";
+    if (point1 === "nopoint" || point2 === 'nopoint') {
+      return "";
+    } else if (point1 === "nopoints" || point2 === 'nopoints') {
+      if (point1 === "nopoints" && point2 === 'nopoints') {
+        return "Kittens have a 25% chance of being colorpoint.";
+      } else if (point1 === "nopointb" || point2 === 'nopointb') {
+        return "Kittens have a 25% chance of being mink.";
+      } else if (point1 === "siamese" || point2 === 'siamese') {
+        return "Kittens have a 50% chance of being colorpoint.";
+      } else if (point1 === "sepia" || point2 === "sepia") {
+        return "Kittens have a 50% chance of being mink.";
+      } else {
+        return "Kittens have a 25% chance of being colorpoint and a 25% chance of being mink.";
+      }
+    } else if (point1 === "nopointb" || crex2 === 'nopointb') {
+      if (point1 === "nopointb" && point2 === 'nopointb') {
+        return "Kittens have a 25% chance of being sepia.";
+      } else if (point1 === "siamese" || point2 === 'siamese') {
+        return "Kittens have a 50% chance of being mink.";
+      } else if (point1 === "sepia" || point2 === "sepia") {
+        return "Kittens have a 50% chance of being sepia.";
+      } else {
+        return "Kittens have a 25% chance of being mink and a 25% chance of being sepia.";
+      }
+    } else if (point1 === "siamese" || point2 === 'siamese') {
+      if (point1 === "siamese" && point2 === 'siamese') {
+        return "All kittens will be colorpoint.";
+      } else if (point1 === "sepia" || point2 === "sepia") {
+        return "All kittens will be mink.";
+      } else {
+        return "Kittens have a 50% chance of being colorpoint and a 50% chance of being mink.";
+      }
+    } else if (point1 === "sepia" || point2 === "sepia") {
+      if (point1 === "sepia" && point2 === "sepia") {
+        return "All kittens will be sepia.";
+      } else {
+        return "Kittens have a 50% chance of being mink and a 50% chance of being sepia.";
+      }
+    } else {
+      return "Kittens have a 25% chance of being colorpoint, a 50% chance of being mink, an a 25% chance of being sepia.";
+    }
+  }
+
+  function white() {
+    var white1 = document.getElementById("white1").value;
+    var white2 = document.getElementById("white2").value;
+    var text = "";
+    if (white1 === "domwhite" || white2 === "domwhite") {
+      return " All kittens will be dominant white.";
+    } else if (white1 === "domwhitespot" || white2 === "domwhitespot") {
+      if (white1 === "domwhitespot" && white2 === "domwhitespot") {
+        return " Kittens have a 75% chance of being dominant white and a 25% chance of having over half white spotting.";
+      } else if (white1 === "domwhitenone" || white2 === "domwhitenone") {
+        return " Kittens have a 75% chance of being dominant white and a 25% chance of having no white.";
+      } else if (white1 === "bigwhite" || white2 === "bigwhite") {
+        return " Kittens have a 50% chance of being dominant white and a 50% chance of having over half white.";
+      } else if (white1 === "smallwhite" || white2 === "smallwhite") {
+        return " Kittens have a 50% chance of being dominant white, a 25% chance of having over half white spotting, and a 25% chance of having under half white spotting.";
+      } else {
+        return " Kittens have a 50% chance of being dominant white and a 50% chance of having under half white spotting.";
+      }
+    } else if (white1 === "domwhitenone" || white2 === "domwhitenone") {
+      if (white1 === "domwhitenone" && white2 === "domwhitenone") {
+        return " Kittens have a 75% chance of being dominant white and a 25% chance of having no white.";
+      } else if (white1 === "bigwhite" || white2 === "bigwhite") {
+        return " Kittens have a 50% chance of being dominant white and a 50% chance of having over half white spotting.";
+      } else if (white1 === "smallwhite" || white2 === "smallwhite") {
+        return " Kittens have a 50% chance of being dominant white, a 25% chance of having under half white spotting, and a 25% chance of having no white.";
+      } else {
+        return " Kittens have a 50% chance of being dominant white and a 50% chance of having no white.";
+      }
+    } else if (white1 === "bigwhite" || white2 === "bigwhite") {
+      if (white1 === "bigwhite" && white2 === "bigwhite") {
+        return " All kittens will have over half white spotting.";
+      } else if (white1 === "smallwhite" || white2 === "smallwhite") {
+        return " Kittens have a 50% chance of having over half white spotting and a 50% chance of having under half white spotting.";
+      } else {
+        return " All kittens will have under half white spotting.";
+      }
+    } else if (white1 === "smallwhite" || white2 === "smallwhite") {
+      if (white1 === "smallwhite" && white2 === "smallwhite") {
+        return " Kittens have a 25% chance of having over half white spotting, a 50% chance of having under half white spotting, and a 25% chance of having no white.";
+      } else {
+        return "Kittens have a 50% chance of having under half white spotting and a 50% chance of having no white.";
+      }
+    } else {
+      return " Kittens will have no white spotting."
+    }
+  }
+
+  function curl() {
+    var curl1 = document.getElementById("curl1").value;
+    var curl2 = document.getElementById("curl2").value;
+    var text = "";
+    if (curl1 === "curl" || curl2 === 'curl') {
+      return 'All offspring will have curled ears. ';
+    } else if (curl1 === "nocurl" && curl2 === 'nocurl') {
+      return '';
+    } else if (curl1 === "curlhet" && curl2 === "curlhet") {
+      return 'Offspring have a 75% chance of curled ears. ';
+    } else {
+      return 'Offspring have a 50% chance of curled ears. ';
+    }
+  }
+
+  function fold() {
+    var fold1 = document.getElementById("fold1").value;
+    var fold2 = document.getElementById("fold2").value;
+    var text = "";
+    if (fold1 === "foldhet" && fold2 === 'foldhet') {
+      return 'They have a 66% chance of folded ears. ';
+    } else if (fold1 === "nofold" && fold2 === 'nofold') {
+      return '';
+    } else {
+      return 'They have a 50% chance of folded ears. ';
+    }
+  }
+
+  function bob() {
+    var bob1 = document.getElementById("bob1").value;
+    var bob2 = document.getElementById("bob2").value;
+    var text = "";
+    if (bob1 === "nobob" || bob2 === 'nobob') {
+      return '';
+    } else if (bob1 === "bob" && bob2 === 'bob') {
+      return 'They will all have bobtails. ';
+    } else if (bob1 === "bobhet" && bob2 === "bobhet") {
+      return 'Offspring have a 25% chance of a bobtail. ';
+    } else {
+      return 'Offspring have a 50% chance of a bobtail. ';
+    }
+  }
+
+  function manx() {
+    var manx1 = document.getElementById("manx1").value;
+    var manx2 = document.getElementById("manx2").value;
+    var text = "";
+    if (manx1 === "manx" && manx2 === 'manx') {
+      return 'They have a 66% chance of having shortened manx tails. ';
+    } else if (manx1 === "nomanx" && manx2 === 'nomanx') {
+      return '';
+    } else {
+      return 'They have a 50% chance of having shortened manx tails. ';
+    }
+  }
+
+  function munchkin() {
+    var munchkin1 = document.getElementById("munchkin1").value;
+    var munchkin2 = document.getElementById("munchkin2").value;
+    var text = "";
+    if (munchkin1 === "munchkin" && munchkin2 === 'munchkin') {
+      return 'They have a 66% chance of having short legs. ';
+    } else if (munchkin1 === "nomunchkin" && munchkin2 === 'nomunchkin') {
+      return '';
+    } else {
+      return 'They have a 50% chance of having short legs. ';
+    }
+  }
+
+  function toes() {
+    var toes1 = document.getElementById("toes1").value;
+    var toes2 = document.getElementById("toes2").value;
+    var text = "";
+    if (toes1 === "toes" || toes2 === 'toes') {
+      return 'All offspring will have extra toes. ';
+    } else if (toes1 === "notoes" && toes2 === 'notoes') {
+      return '';
+    } else if (curl1 === "toeshet" && curl2 === "toeshet") {
+      return 'Offspring have a 75% chance of extra toes. ';
+    } else {
+      return 'Offspring have a 50% chance of extra toes. ';
+    }
+  }
+
+  $('.resultfur').text(furType() + " Offspring " + furLength() + wirehair());
+  $('.resultcolor').text(colorTom() + " " + colorMolly() + caramel() + amber());
+  $('.resultpattern').text(agouti() + tabby() + bengal() + " " + silver());
+  $('.resultwhite').text(colorpoint() + white());
+  $('.resultother').text(curl() + fold() + bob() + manx() + munchkin() + toes());
+}
+</script>
