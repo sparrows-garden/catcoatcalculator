@@ -1,3 +1,4 @@
+window.onload = function(){ 
 document.getElementById("advcalculate").onclick = calculateCoat;
 
 function calculateCoat() {
@@ -1737,5 +1738,6 @@ function calculateCoat() {
   $('.resultpattern').text(agouti() + tabby() + bengal() + " " + silver());
   $('.resultwhite').text(colorpoint() + white());
   $('.resultother').text(curl() + fold() + bob() + manx() + munchkin() + toes());
+}
 }
 </script>
