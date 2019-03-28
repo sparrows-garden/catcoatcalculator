@@ -1,4 +1,7 @@
 <html>
+<head>
+</head>
+<body>
 <table>
   <tr>
     <td></td>
@@ -763,4 +766,5 @@ function calculateCoat() {
   $('.general').text("Kittens " + furLength() + ". Toms can be " + coatColorTom() + domwhite() + ". Mollies can be " + coatColorMolly() + domwhite() + ". " + tabby() + silver() + colorpoint() + white());
 }
 </script>
+</body>
 </html>
