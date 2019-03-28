@@ -1,0 +1,764 @@
+<table>
+  <tr>
+    <td></td>
+    <td style="width:38%;">Father</td>
+    <td style="width:38%;">Mother</td>
+    <tr>
+      <td>Fur Length</td>
+      <td><select id="length1">
+  <option value="short">Short</option>
+  <option value="longcarry">Short, carries long</option>
+  <option value="long">Long</option>
+  </select></td>
+      <td><select id="length2">
+  <option value="short">Short</option>
+  <option value="longcarry">Short, carries long</option>
+  <option value="long">Long</option>
+  </select></td>
+    </tr>
+    <tr>
+      <td>Eumelanin</td>
+      <td><select id="base1">
+  <option value="black">Black</option>
+  <option value="blackchoc">Black, carries chocolate</option>
+  <option value="blackcinn">Black, carries cinnamon</option>
+  <option value="chocolate">Chocolate</option>
+  <option value="choccinn">Chocolate, carries cinnamon</option>
+  <option value="cinnamon">Cinnamon</option>
+  </select></td>
+      <td><select id="base2">
+  <option value="black">Black</option>
+  <option value="blackchoc">Black, carries chocolate</option>
+  <option value="blackcinn">Black, carries cinnamon</option>
+  <option value="chocolate">Chocolate</option>
+  <option value="choccinn">Chocolate, carries cinnamon</option>
+  <option value="cinnamon">Cinnamon</option>
+  </select></td>
+    </tr>
+    <tr>
+      <td>Sex-linked Red</td>
+      <td><select id="red1">
+  <option value="notred">Not red</option>
+  <option value="red">Red</option>
+  </select></td>
+      <td><select id="red2">
+  <option value="notred">Not red</option>
+  <option value="red">Red</option>
+  <option value="tortie">Tortoiseshell</option>
+  </select></td>
+    </tr>
+    <tr>
+      <td>Dilution</td>
+      <td><select id="dilute1">
+  <option value="nodilute">Non-dilute</option>
+  <option value="dilutecarry">Non-dilute, carrier</option>
+  <option value="dilute">Dilute</option>
+  </select></td>
+      <td><select id="dilute2">
+  <option value="nodilute">Non-dilute</option>
+  <option value="dilutecarry">Non-dilute, carrier</option>
+  <option value="dilute">Dilute</option>
+  </select></td>
+    </tr>
+    <tr>
+      <td>Tabby</td>
+      <td><select id="agouti1">
+  <option value="solid">Solid</option>
+  <option value="solidcarry">Tabby, carries solid</option>
+  <option value="tabby">Tabby</option>
+  </select></td>
+      <td><select id="agouti2">
+  <option value="solid">Solid</option>
+  <option value="solidcarry">Tabby, carries solid</option>
+  <option value="tabby">Tabby</option>
+  </select></td>
+    </tr>
+    <tr>
+      <td>Tabby Pattern</td>
+      <td><select id="tabby1">
+  <option value="mackerel">Mackerel</option>
+  <option value="classic">Classic</option>
+  <option value="spotted">Spotted</option>
+  <option value="ticked">Ticked</option>
+  </select></td>
+      <td><select id="tabby2">
+  <option value="mackerel">Mackerel</option>
+  <option value="classic">Classic</option>
+  <option value="spotted">Spotted</option>
+  <option value="ticked">Ticked</option>
+  </select></td>
+    </tr>
+    <tr>
+      <td>Silver/Smoke</td>
+      <td><select id="silver1">
+  <option value="nosilver">Non-silver</option>
+  <option value="silvercarry">Silver, carries non-silver</option>
+  <option value="silver">Silver</option>
+  </select></td>
+      <td><select id="silver2">
+  <option value="nosilver">Non-silver</option>
+  <option value="silvercarry">Silver, carries non-silver</option>
+  <option value="silver">Silver</option>
+  </select></td>
+    </tr>
+    <tr>
+      <td>Colorpoint</td>
+      <td><select id="point1">
+  <option value="nopoint">Not pointed</option>
+  <option value="pointcarry">Not pointed, carries point</option>
+  <option value="point">Pointed</option>
+  </select></td>
+      <td><select id="point2">
+  <option value="nopoint">Not pointed</option>
+  <option value="pointcarry">Not pointed, carries point</option>
+  <option value="point">Pointed</option>
+  </select></td>
+    </tr>
+    <tr>
+      <td>White</td>
+      <td><select id="white1">
+  <option value="nowhite">No white</option>
+  <option value="smallwhite">0-50% white</option>
+  <option value="bigwhite">50-100% white</option>
+  <option value="domwhite">Dominant white</option>
+  <option value="domwhitenone">Dom white, carries non-white</option>
+  <option value="domwhitespot">Dom white, carries white spotting</option>
+  </select></td>
+      <td><select id="white2">
+  <option value="nowhite">No white</option>
+  <option value="smallwhite">0-50% white</option>
+  <option value="bigwhite">50-100% white</option>
+  <option value="domwhite">Dominant white</option>
+  <option value="domwhitenone">Dom white, carries non-white</option>
+  <option value="domwhitespot">Dom white, carries white 
+  </select></td>
+    </tr>
+
+</table><br>
+<center>
+  <button id="calculate" class="button sqs-system-button sqs-editable-button">Calculate!</button></center><br><br>
+<p class="general"></p>
+
+<style>
+    select {
+  width: 100%;
+  padding: 5px;
+  background-color: white;
+  border-radius: 0px;
+  font-size: 14px;
+}
+    </style>
+
+<script>
+document.getElementById("calculate").onclick = calculateCoat;
+
+function calculateCoat() {
+
+  function furLength() {
+    var length1 = document.getElementById("length1").value;
+    var length2 = document.getElementById("length2").value;
+    var text = "";
+    if (length1 === "long" && length2 === 'long') {
+      return 'will be longhaired';
+    } else if (length1 === "short" || length2 === "short") {
+      return "will be shorthaired";
+    } else {
+      return "can be shorthaired or longhaired";
+    }
+  }
+
+  function coatColorTom() {
+    var base1 = document.getElementById("base1").value;
+    var base2 = document.getElementById("base2").value;
+    var red2 = document.getElementById("red2").value;
+    var dilute1 = document.getElementById("dilute1").value;
+    var dilute2 = document.getElementById("dilute2").value;
+    var white1 = document.getElementById("white1").value;
+    var white2 = document.getElementById("white2").value;
+    var text = "";
+	
+  	if (white1 === "domwhite" || white2 === "domwhite"){
+    	return "dominant white"
+    }else if (red2 === "red") {
+      if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+        return "red";
+      } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+        return "cream";
+      } else {
+        return "red or cream";
+      }
+    } else if (red2 === "notred") {
+      if (base1 === "black" || base2 === "black") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "black";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "blue";
+        } else {
+          return "black or blue";
+        }
+      } else if (base1 === "blackchoc" || base2 === "blackchoc") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "black or chocolate";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "blue or lilac";
+        } else {
+          return "black, chocolate, blue, or lilac";
+        }
+      } else if (base1 === "blackcinn" || base2 === "blackcinn") {
+        if (base1 === "chocolate" || base2 === "chocolate") {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "black or chocolate";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "blue or lilac";
+          } else {
+            return "black, chocolate, blue, or lilac";
+          }
+        } else if (base1 === "choccinn" || base2 === "choccinn") {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "black, chocolate, or cinnamon";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "blue, lilac, or fawn";
+          } else {
+            return "black, chocolate, cinnamon, blue, lilac, or fawn";
+          }
+        } else {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "black or cinnamon";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "blue or fawn";
+          } else {
+            return "black, cinnamon, blue, or fawn";
+          }
+        }
+
+      } else if (base1 === "chocolate" || base2 === "chocolate") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "chocolate";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "lilac";
+        } else {
+          return "chocolate or lilac";
+        }
+      } else if (base1 === "choccinn" || base2 === "choccinn") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "chocolate or cinnamon";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "lilac or fawn";
+        } else {
+          return "chocolate, cinnamon, lilac, or fawn";
+        }
+      } else {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "cinnamon";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "fawn";
+        } else {
+          return "cinnamon or fawn";
+        }
+      }
+    } else {
+      if (base1 === "black" || base2 === "black") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "black or red";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "blue or cream";
+        } else {
+          return "black, red, blue, or cream";
+        }
+      } else if (base1 === "blackchoc" || base2 === "blackchoc") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "black, chocolate, or red";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "blue, lilac, or cream";
+        } else {
+          return "black, chocolate, red, blue, lilac, or cream";
+        }
+      } else if (base1 === "blackcinn" || base2 === "blackcinn") {
+        if (base1 === "chocolate" || base2 === "chocolate") {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "black, chocolate, or red";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "blue, lilac, or cream";
+          } else {
+            return "black, chocolate, red, blue, lilac, or cream";
+          }
+        } else if (base1 === "choccinn" || base2 === "choccinn") {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "black, chocolate, cinnamon, or red";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "blue, lilac, fawn, or cream";
+          } else {
+            return "black, chocolate, cinnamon, red, blue, lilac, fawn, or cream";
+          }
+        } else {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "black, cinnamon, or red";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "blue, fawn, or cream";
+          } else {
+            return "black, cinnamon, red, blue, fawn, or cream";
+          }
+        }
+
+      } else if (base1 === "chocolate" || base2 === "chocolate") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "chocolate or red";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "lilac or cream";
+        } else {
+          return "chocolate, red, lilac, or cream";
+        }
+      } else if (base1 === "choccinn" || base2 === "choccinn") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "chocolate, cinnamon, or red";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "lilac, fawn, or cream";
+        } else {
+          return "chocolate, cinnamon, red, lilac, fawn, or cream";
+        }
+      } else {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "cinnamon or red";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "fawn or cream";
+        } else {
+          return "cinnamon, red, fawn, or cream";
+        }
+      }
+    }
+
+  }
+  //end coatColorTom 
+
+  function coatColorMolly() {
+    var base1 = document.getElementById("base1").value;
+    var base2 = document.getElementById("base2").value;
+    var red1 = document.getElementById("red1").value;
+    var red2 = document.getElementById("red2").value;
+    var dilute1 = document.getElementById("dilute1").value;
+    var dilute2 = document.getElementById("dilute2").value;
+    var white1 = document.getElementById("white1").value;
+    var white2 = document.getElementById("white2").value;
+    var text = ""
+
+    if (white1 === "domwhite" || white2 === "domwhite"){
+    	return "dominant white"
+    }else if (red1 === "red" && red2 === "red") {
+      if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+        return "red";
+      } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+        return "cream";
+      } else {
+        return "red or cream";
+      }
+    } else if (red1 === "notred" && red2 === "notred") {
+      if (base1 === "black" || base2 === "black") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "black";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "blue";
+        } else {
+          return "black or blue";
+        }
+      } else if (base1 === "blackchoc" || base2 === "blackchoc") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "black or chocolate";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "blue or lilac";
+        } else {
+          return "black, chocolate, blue, or lilac";
+        }
+      } else if (base1 === "blackcinn" || base2 === "blackcinn") {
+        if (base1 === "chocolate" || base2 === "chocolate") {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "black or chocolate";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "blue or lilac";
+          } else {
+            return "black, chocolate, blue, or lilac";
+          }
+        } else if (base1 === "choccinn" || base2 === "choccinn") {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "black, chocolate, or cinnamon";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "blue, lilac, or fawn";
+          } else {
+            return "black, chocolate, cinnamon, blue, lilac, or fawn";
+          }
+        } else {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "black or cinnamon";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "blue or fawn";
+          } else {
+            return "black, cinnamon, blue, or fawn";
+          }
+        }
+
+      } else if (base1 === "chocolate" || base2 === "chocolate") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "chocolate";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "lilac";
+        } else {
+          return "chocolate or lilac";
+        }
+      } else if (base1 === "choccinn" || base2 === "choccinn") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "chocolate or cinnamon";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "lilac or fawn";
+        } else {
+          return "chocolate, cinnamon, lilac, or fawn";
+        }
+      } else {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "cinnamon";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "fawn";
+        } else {
+          return "cinnamon or fawn";
+        }
+      }
+    } else if (red1 === "red" && red2 === "tortie") {
+      if (base1 === "black" || base2 === "black") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "tortoiseshell or red";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "dilute tortoiseshell or cream";
+        } else {
+          return "tortoiseshell, red, dilute tortoiseshell, or cream";
+        }
+      } else if (base1 === "blackchoc" || base2 === "blackchoc") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "tortoiseshell, chocolate tortoiseshell, or red";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "dilute tortoiseshell, lilac-cream tortoiseshell, or cream";
+        } else {
+          return "tortoiseshell, chocolate tortie, red, dilute tortie, lilac-cream tortie, or cream";
+        }
+      } else if (base1 === "blackcinn" || base2 === "blackcinn") {
+        if (base1 === "chocolate" || base2 === "chocolate") {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "tortoiseshell, chocolate tortoiseshell, or red";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "dilute tortoiseshell, lilac-cream tortoiseshell, or cream";
+          } else {
+            return "tortoiseshell, chocolate tortie, red, dilute tortie, lilac-cream tortie, or cream";
+          }
+        } else if (base1 === "choccinn" || base2 === "choccinn") {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "tortoiseshell, chocolate tortie, cinnamon tortie, or red";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "dilute tortoiseshell, lilac-cream tortie, fawn-cream tortie, or cream";
+          } else {
+            return "tortoiseshell, chocolate tortie, cinnamon tortie, red, dilute tortie, lilac-cream tortie, fawn-cream tortie, or cream";
+          }
+        } else {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "tortoiseshell, cinnamon tortoiseshell, or red";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "dilute tortoiseshell, fawn-cream tortoiseshell, or cream";
+          } else {
+            return "tortoiseshell, cinnamon tortie, red, dilute tortie, fawn-cream tortie, or cream";
+          }
+        }
+
+      } else if (base1 === "chocolate" || base2 === "chocolate") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "chocolate tortoiseshell or red";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "lilac-cream tortoiseshell or cream";
+        } else {
+          return "chocolate tortoiseshell, red, lilac-cream tortoiseshell, or cream";
+        }
+      } else if (base1 === "choccinn" || base2 === "choccinn") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "chocolate tortoiseshell, cinnamon tortoiseshell, or red";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "lilac-cream tortoiseshell, fawn-cream tortoiseshell, or cream";
+        } else {
+          return "chocolate tortoisheshell, cinnamon tortie, red, lilac-cream tortie, fawn-cream tortie, or cream";
+        }
+      } else {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "cinnamon tortoiseshell or red";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "fawn-cream tortoiseshell or cream";
+        } else {
+          return "cinnamon tortoiseshell, red, fawn-cream tortoiseshell, or cream";
+        }
+      }
+    } else if (red1 === "notred" && red2 === "tortie") {
+      if (base1 === "black" || base2 === "black") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "black or tortoiseshell";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "blue or dilute tortoiseshell";
+        } else {
+          return "black, tortoiseshell, blue, or dilute tortoiseshell";
+        }
+      } else if (base1 === "blackchoc" || base2 === "blackchoc") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "black, tortoiseshell, chocolate, or chocolate tortoiseshell";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "blue, dilute tortoiseshell, lilac, or lilac-cream tortoiseshell";
+        } else {
+          return "black, tortoiseshell, chocolate, chocolate tortie, blue, dilute tortie, lilac, or lilac-cream tortie";
+        }
+      } else if (base1 === "blackcinn" || base2 === "blackcinn") {
+        if (base1 === "chocolate" || base2 === "chocolate") {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "black, tortoiseshell, chocolate, or chocolate tortoiseshell";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "blue, dilute tortoiseshell, lilac, or lilac-cream tortoiseshell";
+          } else {
+            return "black, tortoiseshell, chocolate, chocolate tortie, blue, dilute tortie, lilac, or lilac-cream tortie";
+          }
+        } else if (base1 === "choccinn" || base2 === "choccinn") {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "black, tortoiseshell, chocolate, chocolate tortie, cinnamon, or cinnamon tortie";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "blue, dilute tortoiseshell, lilac, lilac-cream tortie, fawn, or fawn-cream tortie";
+          } else {
+            return "black, tortoiseshell, chocolate, chocolate tortie, cinnamon, cinnamon tortie, blue, dilute tortie, lilac, lilac tortie, fawn, or fawn-cream tortie";
+          }
+        } else {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "black, tortoiseshell, cinnamon, or cinnamon tortoiseshell";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "blue, dilute tortoiseshell, fawn, or fawn-cream tortoiseshell";
+          } else {
+            return "black, tortoiseshell, cinnamon, cinnamon tortie, blue, dilute tortie, fawn, or fawn-cream tortie";
+          }
+        }
+
+      } else if (base1 === "chocolate" || base2 === "chocolate") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "chocolate or chocolate tortoiseshell";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "lilac or lilac-cream tortoiseshell";
+        } else {
+          return "chocolate, chocolate tortoiseshell, lilac, or lilac-cream tortoiseshell";
+        }
+      } else if (base1 === "choccinn" || base2 === "choccinn") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "chocolate, chocolate tortoiseshell, cinnamon, or cinnamon tortoiseshell";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "lilac, lilac-cream tortoiseshell, fawn, or fawn-cream tortoiseshell";
+        } else {
+          return "chocolate, chocolate tortoiseshell, cinnamon, cinnamon tortie, lilac, lilac-cream tortie, fawn, or fawn-cream tortie";
+        }
+      } else {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "cinnamon or cinnamon tortoiseshell";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "fawn or fawn-cream tortoiseshell";
+        } else {
+          return "cinnamon, cinnamon tortoiseshell, fawn, or fawn-cream tortoiseshell";
+        }
+      }
+
+    }else{
+    	if (base1 === "black" || base2 === "black") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "tortoiseshell";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "dilute tortoiseshell";
+        } else {
+          return "tortoiseshell or dilute tortoiseshell";
+        }
+      } else if (base1 === "blackchoc" || base2 === "blackchoc") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "tortoiseshell or chocolate tortoiseshell";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "dilute tortoiseshell or lilac-cream tortoiseshell";
+        } else {
+          return "tortoiseshell, chocolate tortie, dilute tortie, or lilac-cream tortie";
+        }
+      } else if (base1 === "blackcinn" || base2 === "blackcinn") {
+        if (base1 === "chocolate" || base2 === "chocolate") {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "tortoiseshell or chocolate tortoiseshell";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "dilute tortoiseshell or lilac-cream tortoiseshell";
+          } else {
+            return "tortoiseshell, chocolate tortie, dilute tortie, or lilac-cream tortie";
+          }
+        } else if (base1 === "choccinn" || base2 === "choccinn") {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "tortoiseshell, chocolate tortie, or cinnamon tortie";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "dilute tortoiseshell, lilac-cream tortie, or fawn-cream tortie";
+          } else {
+            return "tortoiseshell, chocolate tortie, cinnamon tortie, dilute tortie, lilac-cream tortie, or fawn-cream tortie";
+          }
+        } else {
+          if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+            return "tortoiseshell or cinnamon tortoiseshell";
+          } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+            return "dilute tortoiseshell or fawn-cream tortoiseshell";
+          } else {
+            return "tortoiseshell, cinnamon tortie, dilute tortie, or fawn-cream tortie";
+          }
+        }
+
+      } else if (base1 === "chocolate" || base2 === "chocolate") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "chocolate tortoiseshell";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "lilac-cream tortoiseshell";
+        } else {
+          return "chocolate tortoiseshell or lilac-cream tortoiseshell";
+        }
+      } else if (base1 === "choccinn" || base2 === "choccinn") {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "chocolate tortoiseshell or cinnamon tortoiseshell";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "lilac-cream tortoiseshell or fawn-cream tortoiseshell";
+        } else {
+          return "chocolate tortoisheshell, cinnamon tortie, lilac-cream tortie, or fawn-cream tortie";
+        }
+      } else {
+        if (dilute1 === "nodilute" || dilute2 === "nodilute") {
+          return "cinnamon tortoiseshell";
+        } else if (dilute1 === "dilute" && dilute2 === "dilute") {
+          return "fawn-cream tortoiseshell";
+        } else {
+          return "cinnamon tortoiseshell or fawn-cream tortoiseshell";
+        }
+      }
+    } 
+  }
+
+  function tabby() {
+  	var agouti1 = document.getElementById("agouti1").value;
+    var agouti2 = document.getElementById("agouti2").value;
+    var tabby1 = document.getElementById("tabby1").value;
+    var tabby2 = document.getElementById("tabby2").value;
+    var text = "";
+    if (tabby1 === "ticked" || tabby2 === "ticked"){
+    	if (agouti1 === "solid" && agouti2 === "solid"){
+      	return "All kittens will be genetically solid, but red kittens will display ticked tabby, spotted tabby, mackerel tabby, or classic tabby.";
+      }else if (agouti1 === "tabby" || agouti2 === "tabby"){
+      	return "Kittens can be ticked tabby, spotted tabby, mackerel tabby, or classic tabby.";
+      }else{
+      	return "Kittens can be solid, ticked tabby, spotted tabby, mackerel tabby, or classic tabby. Genetically solid reds still display a tabby pattern.";
+      }   
+    }else if (tabby1 === "spotted" || tabby2 === "spotted"){
+    	if (agouti1 === "solid" && agouti2 === "solid"){
+      	return "All kittens will be genetically solid, but red kittens will display spotted tabby, mackerel tabby, or classic tabby.";
+      }else if (agouti1 === "tabby" || agouti2 === "tabby"){
+      	return "Kittens can be spotted tabby, mackerel tabby, or classic tabby.";
+      }else{
+      	return "Kittens can be solid, spotted tabby, mackerel tabby, or classic tabby. Genetically solid reds still display a tabby pattern.";
+      }
+    }else if (tabby1 === "mackerel" || tabby2 === "mackerel"){
+    	if (agouti1 === "solid" && agouti2 === "solid"){
+      	return "All kittens will be genetically solid, but red kittens will display mackerel tabby or classic tabby.";
+      }else if (agouti1 === "tabby" || agouti2 === "tabby"){
+      	return "Kittens can be mackerel tabby or classic tabby.";
+      }else{
+      	return "Kittens can be solid, mackerel tabby, or classic tabby. Genetically solid reds still display a tabby pattern.";
+      }
+    }else{
+    	if (agouti1 === "solid" && agouti2 === "solid"){
+      	return "All kittens will be genetically solid, but red kittens will display classic tabby.";
+      }else if (agouti1 === "tabby" || agouti2 === "tabby"){
+      	return "Kittens will all be classic tabby.";
+      }else{
+      	return "Kittens can be solid or classic tabby. Genetically solid reds still display a tabby pattern.";
+      }
+    }
+  }
+
+  function silver() {
+    var silver1 = document.getElementById("silver1").value;
+    var silver2 = document.getElementById("silver2").value;
+    var text = "";
+    if (silver1 === "nosilver" && silver2 === 'nosilver') {
+      return '';
+    } else if (silver1 === "silver" || silver2 === 'silver') {
+      return ' All kittens will be silver/smoke.';
+    } else {
+      return ' Some kittens may be silver/smoke.';
+    }
+  }
+
+  function colorpoint() {
+    var point1 = document.getElementById("point1").value;
+    var point2 = document.getElementById("point2").value;
+    var text = "";
+    if (point1 === "nopoint" || point2 === 'nopoint') {
+      return '';
+    } else if (point1 === "point" && point2 === 'point') {
+      return ' All kittens will be colorpoints.';
+    } else {
+      return ' Some kittens may be colorpoints.';
+    }
+  }
+  
+	function domwhite() {
+  	var white1 = document.getElementById("white1").value;
+    var white2 = document.getElementById("white2").value;
+    var text = "";
+  	if (white1 === "domwhite" || white2 === "domwhite"){
+    return "";
+    }else if(white1 === "domwhitenone" || white2 === "domwhitenone" || white1 === "domwhitespot" || white2 === "domwhitespot"){
+    return ", or dominant white";
+    }else{
+    return "";
+    }
+    
+  }
+  
+  function white() {
+    var white1 = document.getElementById("white1").value;
+    var white2 = document.getElementById("white2").value;
+    var text = "";
+    if (white1 === "domwhite" || white2 === "domwhite"){
+    	return "";
+    } else if (white1 === "domwhitespot" || white2 === "domwhitespot"){
+    	if (white1 === "domwhitespot" && white2 === "domwhitespot"){
+      	return " Those that aren't dominant white will have over 50% white spotting.";
+      } else if (white1 === "domwhitenone" || white2 === "domwhitenone"){
+      	return " Those that aren't dominant white will have under 50% white spotting.";
+      } else if (white1 === "bigwhite" || white2 === "bigwhite"){
+      	return " Those that aren't dominant white will have over 50% white spotting.";
+      } else if (white1 === "smallwhite" || white2 === "smallwhite"){
+      	return " Those that aren't dominant white can have any amount of white spotting.";
+      } else {
+      	return " Those that aren't dominant white will have under 50% white spotting.";
+      }
+    } else if (white1 === "domwhitenone" || white2 === "domwhitenone"){
+      if (white1 === "domwhitenone" && white2 === "domwhitenone"){
+      	return " Those that aren't dominant white will have no white spotting.";
+      } else if (white1 === "bigwhite" || white2 === "bigwhite"){
+      	return " Those that aren't dominant white will have under 50% white spotting.";
+      } else if (white1 === "smallwhite" || white2 === "smallwhite"){
+      	return " Those that aren't dominant white can have under 50% white spotting, or none at all.";
+      } else {
+      	return " Those that aren't dominant white will have no white spotting.";
+      }
+    } else if (white1 === "bigwhite" || white2 === "bigwhite"){
+    	if (white1 === "bigwhite" && white2 === "bigwhite"){
+      	return " All kittens will have over 50% white spotting.";
+      } else if (white1 === "smallwhite" || white2 === "smallwhite"){
+      	return " Kittens can have any amount of white spotting.";
+      } else {
+      	return " All kittens will have under 50% white spotting.";
+      }
+    } else if (white1 === "smallwhite" || white2 === "smallwhite"){
+      if (white1 === "smallwhite" && white2 === "smallwhite"){
+      	return " Kittens can have any amount of white spotting or lack thereof.";
+      } else {
+      	return " Kittens can have under 50% white spotting or none at all.";
+      }
+    } else {
+    	return " Kittens will have no white spotting."
+    }
+  }
+  
+  $('.general').text("Kittens " + furLength() + ". Toms can be " + coatColorTom() + domwhite() + ". Mollies can be " + coatColorMolly() + domwhite() + ". " + tabby() + silver() + colorpoint() + white());
+}
+</script>
